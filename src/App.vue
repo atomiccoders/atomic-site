@@ -1,6 +1,5 @@
 <template>
   <v-app>
-
     <v-overlay :value="overlay" opacity="1" z-index="10">
       <v-progress-circular color="primary" indeterminate size="64"></v-progress-circular>
     </v-overlay>
@@ -168,6 +167,7 @@ export default {
         setTimeout(() => {
           this.overlay = false;
         }, 3000);
+      //TODO: Change this setTimeout for pageLoaded check
     },
   },
   beforeMount() {
