@@ -167,8 +167,11 @@ export default {
       val &&
         setTimeout(() => {
           this.overlay = false;
-        }, 5000);
+        }, 3000);
     },
+  },
+  beforeMount() {
+    this.overlay = true;
   },
 };
 </script>
