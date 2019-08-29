@@ -1,5 +1,10 @@
 <template>
   <v-app>
+
+    <v-overlay :value="overlay" opacity="1" z-index="10">
+      <v-progress-circular color="primary" indeterminate size="64"></v-progress-circular>
+    </v-overlay>
+
     <v-navigation-drawer
       class="text-center"
       app
@@ -76,6 +81,19 @@
             <span>Contact</span>
           </v-btn>
         </div>
+
+        <!-- Loading trigger -->
+        <div>
+          <v-btn
+            color="primary accent-4"
+            class="white--text mb-3"
+            @click="overlay = !overlay"
+          >
+            Restart App
+            <v-icon right>mdi-restart</v-icon>
+          </v-btn>
+        </div>
+
         <div class="mt-auto">
           <div class="my-4">
             <a
@@ -124,6 +142,7 @@ export default {
   name: 'App',
   components: {},
   data: () => ({
+    overlay: false,
     icons: [
       {
         title: 'Linkedin profile',
@@ -143,6 +162,14 @@ export default {
       easings: Object.keys(easings),
     },
   }),
+  watch: {
+    overlay(val) {
+      val &&
+        setTimeout(() => {
+          this.overlay = false;
+        }, 5000);
+    },
+  },
 };
 </script>
 
