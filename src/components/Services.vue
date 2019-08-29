@@ -8,7 +8,9 @@
     <v-col cols="12" md="6">
       <v-expansion-panels popout :value="0">
         <v-expansion-panel v-for="(item, i) in items" :key="i">
-          <v-expansion-panel-header>{{ item }}</v-expansion-panel-header>
+          <v-expansion-panel-header class="title font-weight-light">
+            {{ item }}
+          </v-expansion-panel-header>
           <v-expansion-panel-content>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do tempor. Lorem
             ipsum dolor sit amet consectetur adipisicing elit, eiusmod tempor. Proin
