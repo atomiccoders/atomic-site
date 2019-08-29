@@ -52,7 +52,7 @@
         src="../assets/person.png"
         contain
         height="900px"
-        style="position:absolute;top:300px;right:0px;"
+        style="position:absolute;top:250px;right:0px;"
       ></v-img>
     </v-col>
   </v-row>
