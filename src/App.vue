@@ -11,7 +11,7 @@
     >
       <div class="row flex-column fill-height py-5 mx-0 align-center justify-center">
         <!-- <h2 class="display-3 font-weight-black primary--text mb-2">AC</h2> -->
-        <img src="./assets/logo.png" alt="LOGO" class="" style="max-width:100px;" />
+        <img src="./assets/logo.png" alt="LOGO" style="max-width:100px;" />
         <div class="display-1 mb-2">AtomicCode</div>
         <span class="subtitle-2 text-uppercase font-weight-light mb-10">
           Because every pixel matters
