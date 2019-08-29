@@ -93,7 +93,7 @@
       </div>
     </v-navigation-drawer>
 
-    <v-content>
+    <v-content class="hide-overflow">
       <router-view></router-view>
     </v-content>
 

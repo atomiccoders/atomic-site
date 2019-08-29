@@ -1,5 +1,8 @@
 <template>
-  <v-container>
+  <div>
+    <Hero />
+  </div>
+  <!-- <v-container>
     <v-layout text-center wrap>
       <v-flex xs12>
         <v-img
@@ -69,11 +72,16 @@
         </v-layout>
       </v-flex>
     </v-layout>
-  </v-container>
+  </v-container> -->
 </template>
 
 <script>
+import Hero from '../components/Hero';
+
 export default {
+  components: {
+    Hero,
+  },
   data: () => ({
     ecosystem: [
       {
