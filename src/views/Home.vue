@@ -3,6 +3,7 @@
     <Hero />
     <v-container py-5 px-0 fluid>
       <About />
+      <Services />
     </v-container>
   </div>
 </template>
@@ -10,11 +11,13 @@
 <script>
 import Hero from '../components/Hero';
 import About from '../components/About';
+import Services from '../components/Services';
 
 export default {
   components: {
     Hero,
     About,
+    Services,
   },
   data: () => ({
     ecosystem: [
