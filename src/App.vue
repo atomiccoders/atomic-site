@@ -7,26 +7,31 @@
     <v-navigation-drawer
       class="text-center"
       app
+      v-model="drawer"
       style="background-color: rgb(24, 24, 24); border-color: rgb(24, 24, 24);"
     >
       <div class="row flex-column fill-height py-5 mx-0 align-center justify-center">
         <img
           src="./assets/logo.png"
           alt="LOGO"
-          style="max-width:100px;cursor:pointer;filter: drop-shadow(2px 4px 6px black);"
+          class="logo"
           @click="$vuetify.goTo('#hero', options)"
         />
-        <div class="font-fira-sans display-1 mb-0">
+        <div class="font-fira-sans mb-0" :class="[isMobile ? 'headline' : 'display-1']">
           <span class="primary--text">Atomic</span>Code
         </div>
-        <span class="font-fira-sans subtitle-2 text-uppercase font-weight-light mb-10">
+        <span
+          class="font-fira-sans subtitle-2 text-uppercase font-weight-light"
+          :class="[isMobile ? 'mb-5' : 'mb-10']"
+        >
           every pixel matters
         </span>
 
         <div>
           <v-btn
             text
-            class="text-capitalize subheading font-weight-light mb-3"
+            class="text-capitalize subheading font-weight-light"
+            :class="[isMobile ? 'mb-1' : 'mb-3']"
             @click="$vuetify.goTo('#about', options)"
           >
             <span>About Me</span>
@@ -35,7 +40,8 @@
         <div>
           <v-btn
             text
-            class="text-capitalize subheading font-weight-light mb-3"
+            class="text-capitalize subheading font-weight-light"
+            :class="[isMobile ? 'mb-1' : 'mb-3']"
             @click="$vuetify.goTo('#services', options)"
           >
             <span>Services</span>
@@ -44,7 +50,8 @@
         <div>
           <v-btn
             text
-            class="text-capitalize subheading font-weight-light mb-3"
+            class="text-capitalize subheading font-weight-light"
+            :class="[isMobile ? 'mb-1' : 'mb-3']"
             @click="$vuetify.goTo('#experience', options)"
           >
             <span>Experience</span>
@@ -53,7 +60,8 @@
         <div>
           <v-btn
             text
-            class="text-capitalize subheading font-weight-light mb-3"
+            class="text-capitalize subheading font-weight-light"
+            :class="[isMobile ? 'mb-1' : 'mb-3']"
             @click="$vuetify.goTo('#skills', options)"
           >
             <span>Skills & Education</span>
@@ -62,7 +70,8 @@
         <div>
           <v-btn
             text
-            class="text-capitalize subheading font-weight-light mb-3"
+            class="text-capitalize subheading font-weight-light"
+            :class="[isMobile ? 'mb-1' : 'mb-3']"
             @click="$vuetify.goTo('#portfolio', options)"
           >
             <span>Portfolio</span>
@@ -71,7 +80,8 @@
         <div>
           <v-btn
             text
-            class="text-capitalize subheading font-weight-light mb-3"
+            class="text-capitalize subheading font-weight-light"
+            :class="[isMobile ? 'mb-1' : 'mb-3']"
             @click="$vuetify.goTo('#clients', options)"
           >
             <span>Clients</span>
@@ -80,22 +90,11 @@
         <div>
           <v-btn
             text
-            class="text-capitalize subheading font-weight-light mb-3"
+            class="text-capitalize subheading font-weight-light"
+            :class="[isMobile ? 'mb-1' : 'mb-3']"
             @click="$vuetify.goTo('#contact', options)"
           >
             <span>Contact</span>
-          </v-btn>
-        </div>
-
-        <!-- Loading trigger -->
-        <div>
-          <v-btn
-            color="primary accent-4"
-            class="white--text mb-3"
-            @click="overlay = !overlay"
-          >
-            Restart App
-            <v-icon right>mdi-restart</v-icon>
           </v-btn>
         </div>
 
@@ -121,12 +120,12 @@
     </v-content>
 
     <v-footer bottom dark dense clipped-right app>
-      <v-toolbar-title class="headline text-capitalize">
+      <v-toolbar-title class="subtitle-1 text-capitalize">
         <span>Quick</span>
         <span class="font-weight-thin">Menu</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <router-link to="/" class="mr-2">
+      <router-link to="/" class="mr-1">
         <v-btn text>
           <span>Home</span>
         </v-btn>
@@ -136,17 +135,23 @@
           <span>Blog</span>
         </v-btn>
       </router-link>
+      <v-btn text @click.stop="drawer = !drawer">
+        <v-icon v-if="isMobile && drawer">mdi-close</v-icon>
+        <v-icon v-else>mdi-menu</v-icon>
+      </v-btn>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import WindowInstanceMap from './windowInstanceMap.js';
 import * as easings from 'vuetify/es5/services/goto/easing-patterns';
 
 export default {
   name: 'App',
   components: {},
   data: () => ({
+    drawer: null,
     overlay: false,
     icons: [
       {
@@ -167,6 +172,11 @@ export default {
       easings: Object.keys(easings),
     },
   }),
+  computed: {
+    isMobile() {
+      return WindowInstanceMap.windowWidth <= 600;
+    },
+  },
   watch: {
     overlay(val) {
       val &&
@@ -185,6 +195,11 @@ export default {
 <style lang="scss">
 a {
   text-decoration: none;
+}
+.logo {
+  max-width: 100px;
+  cursor: pointer;
+  filter: drop-shadow(2px 4px 6px black);
 }
 .font-fira-sans {
   font-family: 'Fira Sans', 'Roboto', sans-serif !important;
