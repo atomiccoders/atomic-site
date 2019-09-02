@@ -5,11 +5,17 @@
         class="fill-height text-right pa-md-5 pa-3 mx-0 align-end justify-end particles"
       >
         <div>
-          <div class="text-uppercase font-weight-light display-2">
+          <div
+            class="text-uppercase font-weight-light font-fira-sans"
+            :class="[isMobile ? 'headline' : 'display-2']"
+          >
             Every Pixel Matters
           </div>
-          <h1 class="primary--text text-uppercase display-4">
-            Atomic<span class="font-weight-thin">Code</span>
+          <h1
+            class="primary--text text-uppercase display-4"
+            :class="[isMobile ? 'display-2 pb-15' : 'display-4']"
+          >
+            Atomic<span class="font-weight-thin white--text">Code</span>
           </h1>
         </div>
       </v-row>
@@ -18,12 +24,17 @@
 </template>
 
 <script>
+import WindowInstanceMap from '../windowInstanceMap.js';
+
 export default {
   name: 'Hero',
   data() {
-    return {
-      test: null,
-    };
+    return {};
+  },
+  computed: {
+    isMobile() {
+      return WindowInstanceMap.windowWidth <= 600;
+    },
   },
 };
 </script>
@@ -42,5 +53,8 @@ export default {
     background-size: contain;
     transform: scaleX(-1);
   }
+}
+.pb-15 {
+  padding-bottom: 60px !important;
 }
 </style>
