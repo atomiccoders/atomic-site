@@ -156,12 +156,12 @@ export default {
     icons: [
       {
         title: 'Linkedin profile',
-        url: '#',
+        url: 'https://www.linkedin.com/in/jakubmichniewicz',
         icon: 'mdi-linkedin-box',
       },
       {
         title: 'Github profile',
-        url: '#',
+        url: 'https://github.com/atomiccoders',
         icon: 'mdi-github-box',
       },
     ],
