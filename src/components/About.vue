@@ -7,7 +7,12 @@
       class="abstract-1"
     ></v-img>
     <v-col cols="12">
-      <h2 class="font-weight-bold primary--text mb-4 display-2">Who I am.</h2>
+      <h2
+        class="font-weight-bold primary--text mb-4"
+        :class="[isMobile ? 'display-1' : 'display-2']"
+      >
+        Who I am.
+      </h2>
     </v-col>
     <v-col cols="12" md="7">
       <v-row justify="space-between">
@@ -59,7 +64,15 @@
 </template>
 
 <script>
-export default {};
+import WindowInstanceMap from '../windowInstanceMap.js';
+
+export default {
+  computed: {
+    isMobile() {
+      return WindowInstanceMap.windowWidth <= 600;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

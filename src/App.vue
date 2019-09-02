@@ -10,11 +10,17 @@
       style="background-color: rgb(24, 24, 24); border-color: rgb(24, 24, 24);"
     >
       <div class="row flex-column fill-height py-5 mx-0 align-center justify-center">
-        <!-- <h2 class="display-3 font-weight-black primary--text mb-2">AC</h2> -->
-        <img src="./assets/logo.png" alt="LOGO" style="max-width:100px;" />
-        <div class="display-1 mb-2">AtomicCode</div>
-        <span class="subtitle-2 text-uppercase font-weight-light mb-10">
-          Because every pixel matters
+        <img
+          src="./assets/logo.png"
+          alt="LOGO"
+          style="max-width:100px;cursor:pointer;filter: drop-shadow(2px 4px 6px black);"
+          @click="$vuetify.goTo('#hero', options)"
+        />
+        <div class="font-fira-sans display-1 mb-0">
+          <span class="primary--text">Atomic</span>Code
+        </div>
+        <span class="font-fira-sans subtitle-2 text-uppercase font-weight-light mb-10">
+          every pixel matters
         </span>
 
         <div>
@@ -179,5 +185,8 @@ export default {
 <style lang="scss">
 a {
   text-decoration: none;
+}
+.font-fira-sans {
+  font-family: 'Fira Sans', 'Roboto', sans-serif !important;
 }
 </style>
