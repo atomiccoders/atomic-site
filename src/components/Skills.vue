@@ -23,7 +23,12 @@
               and counting...
             </p>
             <footer class="text-center">
-              <v-btn contained color="primary" href="/LoremIpsum.pdf" target="_blank">
+              <v-btn
+                contained
+                color="primary"
+                href="/Resume_Jakub_Michniewicz.pdf"
+                target="_blank"
+              >
                 Download CV
               </v-btn>
             </footer>
