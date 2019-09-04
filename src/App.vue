@@ -115,7 +115,7 @@
       </div>
     </v-navigation-drawer>
 
-    <v-content class="hide-overflow">
+    <v-content class="hide-overflow" ref="content">
       <router-view></router-view>
     </v-content>
 
@@ -182,6 +182,7 @@ export default {
       val &&
         setTimeout(() => {
           this.overlay = false;
+          this.$refs.content.$el.classList.add('loaded');
         }, 3000);
       //TODO: Change this setTimeout for pageLoaded check
     },
