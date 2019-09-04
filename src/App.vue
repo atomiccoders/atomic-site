@@ -204,4 +204,8 @@ a {
 .font-fira-sans {
   font-family: 'Fira Sans', 'Roboto', sans-serif !important;
 }
+.v-window__prev,
+.v-window__next {
+  top: calc(90% - 20px) !important;
+}
 </style>
