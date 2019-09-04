@@ -7,6 +7,7 @@
       <Experience />
       <Skills />
       <Portfolio />
+      <Clients />
     </v-container>
   </div>
 </template>
@@ -18,6 +19,7 @@ import Services from '../components/Services';
 import Experience from '../components/Experience';
 import Skills from '../components/Skills';
 import Portfolio from '../components/Portfolio';
+import Clients from '../components/Clients';
 
 export default {
   components: {
@@ -27,6 +29,7 @@ export default {
     Experience,
     Skills,
     Portfolio,
+    Clients,
   },
   data: () => ({}),
 };
