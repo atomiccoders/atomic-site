@@ -6,7 +6,7 @@
 
     <Login :login="login" @login="logIn()" />
 
-    <v-snackbar v-model="snackbar" top right>
+    <v-snackbar v-model="snackbar" color="secondary" top right>
       {{ snackText }}
       <v-btn color="primary" text @click="snackbar = false">
         <v-icon>mdi-close</v-icon>

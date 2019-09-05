@@ -9,9 +9,10 @@
           <v-form v-model="valid" ref="form">
             <v-text-field
               v-model="username"
-              label="Username"
+              label="Login"
               prepend-icon="mdi-account-circle"
               :rules="loginRules"
+              hint="Username or E-mail"
               :loading="pending"
               autofocus
               required
@@ -53,10 +54,12 @@ export default {
   },
   data() {
     return {
+      valid: false,
       showPass: false,
       username: '',
       loginRules: [
-        v => !!v || 'Username is required',
+        v => !!v || 'Login is required',
+        v => (v && v.length >= 3) || 'Login must be more than 3 characters',
       ],
       usernameRules: [
         v => !!v || 'Username is required',
@@ -65,10 +68,12 @@ export default {
       pass: '',
       passRules: [
         v => !!v || 'Password is required',
+        v => (v && v.length >= 6) || 'Password must be more than 6 characters',
       ],
       name: '',
       nameRules: [
         v => !!v || 'Name is required',
+        v => (v && v.length >= 2) || 'Name must be more than 2 characters',
       ],
       email: '',
       emailRules: [
@@ -81,7 +86,7 @@ export default {
   methods: {
     logIn() {
       if (this.$refs.form.validate()) {
-        this.snackbar = true;
+        this.valid = true;
       }
       this.pending = true;
       setTimeout(() => {
@@ -94,6 +99,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
