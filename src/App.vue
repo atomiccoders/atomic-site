@@ -40,7 +40,7 @@
           <v-btn
             text
             class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-1' : 'mb-3']"
+            :class="[isMobile ? 'mb-2' : 'mb-3']"
             @click="$vuetify.goTo('#about', options)"
           >
             <span>About Me</span>
@@ -50,7 +50,7 @@
           <v-btn
             text
             class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-1' : 'mb-3']"
+            :class="[isMobile ? 'mb-2' : 'mb-3']"
             @click="$vuetify.goTo('#services', options)"
           >
             <span>Services</span>
@@ -60,7 +60,7 @@
           <v-btn
             text
             class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-1' : 'mb-3']"
+            :class="[isMobile ? 'mb-2' : 'mb-3']"
             @click="$vuetify.goTo('#experience', options)"
           >
             <span>Experience</span>
@@ -70,7 +70,7 @@
           <v-btn
             text
             class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-1' : 'mb-3']"
+            :class="[isMobile ? 'mb-2' : 'mb-3']"
             @click="$vuetify.goTo('#skills', options)"
           >
             <span>Skills & Education</span>
@@ -80,7 +80,7 @@
           <v-btn
             text
             class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-1' : 'mb-3']"
+            :class="[isMobile ? 'mb-2' : 'mb-3']"
             @click="$vuetify.goTo('#portfolio', options)"
           >
             <span>Portfolio</span>
@@ -90,7 +90,7 @@
           <v-btn
             text
             class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-1' : 'mb-3']"
+            :class="[isMobile ? 'mb-2' : 'mb-3']"
             @click="$vuetify.goTo('#clients', options)"
           >
             <span>Clients</span>
@@ -100,7 +100,7 @@
           <v-btn
             text
             class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-1' : 'mb-3']"
+            :class="[isMobile ? 'mb-2' : 'mb-3']"
             @click="$vuetify.goTo('#contact', options)"
           >
             <span>Contact</span>
