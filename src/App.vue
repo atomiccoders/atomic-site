@@ -4,6 +4,15 @@
       <v-progress-circular color="primary" indeterminate size="64"></v-progress-circular>
     </v-overlay>
 
+    <Login :login="login" @login="logIn()" />
+
+    <v-snackbar v-model="snackbar" top right>
+      {{ snackText }}
+      <v-btn color="primary" text @click="snackbar = false">
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
+    </v-snackbar>
+
     <v-navigation-drawer
       class="text-center"
       app
@@ -99,6 +108,29 @@
         </div>
 
         <div class="mt-auto">
+          <v-btn
+            v-if="!isLogged"
+            color="primary accent-4"
+            class="white--text mb-3"
+            @click="showLogin()"
+          >
+            Login
+            <v-icon right>mdi-login</v-icon>
+          </v-btn>
+          <v-btn
+            v-else
+            color="primary accent-4"
+            class="white--text mb-3"
+            :loading="pending"
+            :disabled="pending"
+            @click="logOut()"
+          >
+            Logout
+            <v-icon right>mdi-logout</v-icon>
+          </v-btn>
+        </div>
+
+        <div class="mt-auto">
           <div class="my-4">
             <a
               v-for="(icon, index) in icons"
@@ -146,10 +178,13 @@
 <script>
 import WindowInstanceMap from './windowInstanceMap.js';
 import * as easings from 'vuetify/es5/services/goto/easing-patterns';
+import Login from './components/Login';
 
 export default {
   name: 'App',
-  components: {},
+  components: {
+    Login,
+  },
   data: () => ({
     drawer: null,
     overlay: false,
@@ -171,10 +206,39 @@ export default {
       easing: 'easeInOutCubic',
       easings: Object.keys(easings),
     },
+    pending: false,
+    login: false,
+    isLogged: false,
+    snackbar: false,
+    snackText: '',
   }),
   computed: {
     isMobile() {
       return WindowInstanceMap.windowWidth <= 600;
+    },
+  },
+  methods: {
+    showLogin() {
+      if (this.isMobile) {
+        this.drawer = false;
+      }
+      this.login = true;
+    },
+    logIn() {
+      this.snackText = 'Successful logged in';
+      this.snackbar = true;
+      this.isLogged = true;
+      this.login = false;
+    },
+    logOut() {
+      this.pending = true;
+      this.snackText = 'Successful logged out';
+      setTimeout(() => {
+        this.pending = false;
+        this.snackbar = true;
+        this.isLogged = false;
+        this.login = false;
+      }, 500);
     },
   },
   watch: {
