@@ -220,4 +220,3 @@ export default {
   width: 1px;
 }
 </style>
-value
