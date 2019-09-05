@@ -4,7 +4,7 @@
       <v-progress-circular color="primary" indeterminate size="64"></v-progress-circular>
     </v-overlay>
 
-    <Login :login="login" @login="logIn()" />
+    <Login :login="login" @login="logIn()" @close="close()" />
 
     <v-snackbar v-model="snackbar" color="secondary" top right>
       {{ snackText }}
@@ -224,6 +224,9 @@ export default {
         this.drawer = false;
       }
       this.login = true;
+    },
+    close() {
+      this.login = false;
     },
     logIn() {
       this.snackText = 'Successful logged in';
