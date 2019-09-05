@@ -11,7 +11,7 @@
         class="font-weight-bold primary--text mb-4"
         :class="[isMobile ? 'display-1' : 'display-2']"
       >
-        Who I am
+        Kim jesteśmy
       </h2>
     </v-col>
     <v-col cols="12" md="7">
@@ -19,11 +19,14 @@
         <v-col cols="12" md="7">
           <div class="subheading mb-5 mb-0">
             <p>
-              I am front-end developer that specializes in Vue and Veutify development.
-              Consectetur adipisicing elit, sed do eiusmod tempor. Quisque viverra quam
-              urna, ac commodo augue convallis et. In vel nisl imperdiet, cursus elit ac,
-              efficitur sem. Nam liber tempor cum soluta nobis eleifend option congue
-              nihil imperdiet doming id quom placerat facer possim assum.
+              <strong>AtomicCode</strong> zajmuje się dostarczaniem dla swoich klientów
+              profesjonalnych stron internetowych, bazujących na najnowszych trendach
+              designerskich oraz posiadających przejrzysty i intuicyjny
+              <strong>system zarządzania treścią</strong>.
+            </p>
+            <p>
+              Nasze doświadczenie w tworzeniu stron internetowych to ponad
+              <strong><big>10</big></strong> lat.
             </p>
             <v-img
               src="https://material-portfolio-dark.vuetifyjs.com/img/signature.0302022c.png"
@@ -35,14 +38,20 @@
         <v-col cols="12" md="4">
           <v-row align="center">
             <v-col cols="6" class="text-uppercase primary--text font-weight-medium">
-              <div class="mb-3">Location</div>
+              <div class="mb-3">Miasto</div>
               <div class="mb-3">Email</div>
-              <div class="mb-3">Phone</div>
+              <div class="mb-3">Telefon</div>
               <div>Skype</div>
             </v-col>
             <v-col cols="6" class="subheading text-no-wrap">
-              <div class="mb-3">Poland</div>
-              <div class="mb-3 text-truncate">kubektkd@gmail.com</div>
+              <div class="mb-3">Gdańsk</div>
+              <div
+                class="mb-3"
+                :class="{ 'text-truncate': !showEmail }"
+                @click="showEmail = !showEmail"
+              >
+                kubektkd@gmail.com
+              </div>
               <div class="mb-3">(+48) 883 543 667</div>
               <div>KubekTKD</div>
             </v-col>
@@ -51,8 +60,8 @@
       </v-row>
     </v-col>
     <v-col col="5" class="hidden-sm-and-down text-right text-uppercase">
-      <div class="display-1">Front-end Developer</div>
-      <span class="primary--text headline font-weight-light">Jakub Michniewicz</span>
+      <div class="display-1">Jakub Michniewicz</div>
+      <span class="primary--text headline font-weight-light">Front-end Developer</span>
       <v-img
         src="../assets/person.png"
         contain
@@ -67,6 +76,11 @@
 import WindowInstanceMap from '../windowInstanceMap.js';
 
 export default {
+  data() {
+    return {
+      showEmail: false,
+    };
+  },
   computed: {
     isMobile() {
       return WindowInstanceMap.windowWidth <= 600;

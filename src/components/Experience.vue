@@ -5,7 +5,7 @@
         class="font-weight-bold primary--text mb-4"
         :class="[isMobile ? 'display-1' : 'display-2']"
       >
-        Where I've been
+        Nasze doświadczenie
       </h2>
     </v-col>
     <v-col cols="12" md="9" class="mx-auto px-0">
@@ -13,7 +13,7 @@
         <v-timeline-item dark v-for="(item, i) in items" :key="i" :right="isMobile">
           <span v-if="!isMobile" slot="opposite">{{ item.year }}</span>
           <v-card class="pa-3">
-            <h3 class="subheading font-weight-bold">{{ item.title }}</h3>
+            <h3 class="subheading font-weight-bold primary--text">{{ item.title }}</h3>
             <div>
               Lorem ipsum dolor sit amet, eum ex saperet euripidis. Amet consetetur
               conclusionemque eum id, eros petentium eam cu.
@@ -33,20 +33,20 @@ export default {
     return {
       items: [
         {
-          title: 'Web Development',
-          year: 2003,
+          title: 'JojoMobile',
+          year: 2014,
         },
         {
-          title: 'Design',
-          year: 2006,
+          title: 'BetterSoftware Group',
+          year: 2015,
         },
         {
-          title: 'Marketing',
-          year: 2008,
+          title: 'Lek-Med.pl / FLOW',
+          year: 2016,
         },
         {
-          title: 'Support',
-          year: 2010,
+          title: 'Tapptic',
+          year: 2019,
         },
       ],
     };

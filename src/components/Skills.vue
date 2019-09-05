@@ -13,14 +13,13 @@
             class="font-weight-bold primary--text mb-4"
             :class="[isMobile ? 'display-1' : 'display-2']"
           >
-            What I know
+            Co potrafimy
           </h2>
         </v-col>
         <v-col cols="auto">
           <blockquote class="my-blockquote">
-            <p class="subheading font-weight-light font-italic">
-              I have been a Core Contributor to the Vuetify opensource project for 2 years
-              and counting...
+            <p class="subheading font-weight-light text-right font-italic">
+              Szukasz profesjonalnego, doświadczonego pracownika?
             </p>
             <footer class="text-center">
               <v-btn
@@ -29,7 +28,7 @@
                 href="/Resume_Jakub_Michniewicz.pdf"
                 target="_blank"
               >
-                Download CV
+                Pobierz CV
               </v-btn>
             </footer>
           </blockquote>
@@ -39,7 +38,7 @@
     <v-col cols="12">
       <v-row justify="space-around">
         <v-col tag="section" cols="12" md="3" id="my-education">
-          <h3 class="headline font-weight-medium mb-4 primary--text">
+          <!-- <h3 class="headline font-weight-medium mb-4 primary--text">
             My Education
           </h3>
           <v-sheet class="mb-5 transparent" v-for="(item, idx) in education" :key="idx">
@@ -56,13 +55,43 @@
                 </div>
               </v-col>
             </v-row>
-          </v-sheet>
+          </v-sheet> -->
+          <h3 class="headline font-weight-medium mb-4 primary--text">
+            Kompetencje miękkie
+          </h3>
+          <div class="mb-4" v-for="(item, idx) in softSkills" :key="idx">
+            <h4 class="text-uppercase mb-3 primary--text">{{ item.category }}</h4>
+            <div class="pl-md-4">
+              <v-row
+                align="center"
+                class="mb-2 mx-0"
+                v-for="(skill, index) in item.skills"
+                :key="index"
+              >
+                <v-col cols="4">
+                  <h5 class="subheading">{{ skill.title }}</h5>
+                </v-col>
+                <v-col cols="8">
+                  <v-rating
+                    readonly
+                    dense
+                    length="6"
+                    v-model="skill.value"
+                    full-icon="mdi-record"
+                    empty-icon="mdi-record"
+                    color="primary"
+                    background-color="grey darken-4"
+                  ></v-rating>
+                </v-col>
+              </v-row>
+            </div>
+          </div>
         </v-col>
         <v-col tag="section" cols="12" md="4" id="my-skills">
           <h3 class="headline font-weight-medium mb-4 primary--text">
-            My Skills
+            Kompetencje twarde
           </h3>
-          <div class="mb-4" v-for="(item, idx) in skills" :key="idx">
+          <div class="mb-4" v-for="(item, idx) in hardSkills" :key="idx">
             <h4 class="text-uppercase mb-3 primary--text">{{ item.category }}</h4>
             <div class="pl-md-4">
               <v-row
@@ -101,35 +130,100 @@ import WindowInstanceMap from '../windowInstanceMap.js';
 export default {
   data() {
     return {
-      education: [
+      // education: [
+      //   {
+      //     school: 'State University',
+      //     title: 'Bachelor of Computer Science',
+      //     category: 'Computer Sciences',
+      //     years: '2013 - 2017',
+      //   },
+      //   {
+      //     school: 'Community College',
+      //     title: 'Certificate of Completion',
+      //     category: 'Modern Logo Design',
+      //     years: '2012 - 2013',
+      //   },
+      //   {
+      //     school: 'Community College',
+      //     title: 'Associate of Science',
+      //     category: 'Graphic Design',
+      //     years: '2010 - 2012',
+      //   },
+      //   {
+      //     school: 'Community College',
+      //     title: 'Certificate of Completion',
+      //     category: 'Marketing',
+      //     years: '2010 - 2010',
+      //   },
+      // ],
+      softSkills: [
         {
-          school: 'State University',
-          title: 'Bachelor of Computer Science',
-          category: 'Computer Sciences',
-          years: '2013 - 2017',
+          category: 'Komunikacja',
+          skills: [
+            {
+              title: 'Relacje B2B',
+              value: 5,
+            },
+            {
+              title: 'Obsługa klienta',
+              value: 6,
+            },
+            {
+              title: 'Odporność na stres',
+              value: 5,
+            },
+            {
+              title: 'Praca w grupie',
+              value: 5,
+            },
+          ],
         },
         {
-          school: 'Community College',
-          title: 'Certificate of Completion',
-          category: 'Modern Logo Design',
-          years: '2012 - 2013',
-        },
-        {
-          school: 'Community College',
-          title: 'Associate of Science',
-          category: 'Graphic Design',
-          years: '2010 - 2012',
-        },
-        {
-          school: 'Community College',
-          title: 'Certificate of Completion',
-          category: 'Marketing',
-          years: '2010 - 2010',
+          category: 'Organizacja',
+          skills: [
+            {
+              title: 'Zarządzanie czasem',
+              value: 6,
+            },
+            {
+              title: 'Delegowanie zadań',
+              value: 5,
+            },
+            {
+              title: 'Dokładność',
+              value: 6,
+            },
+            {
+              title: 'Terminowość',
+              value: 6,
+            },
+          ],
         },
       ],
-      skills: [
+      hardSkills: [
         {
-          category: 'Graphics/Media',
+          category: 'Programowanie',
+          skills: [
+            {
+              title: 'Javascript',
+              value: 6,
+            },
+            {
+              title: 'HTML5/CSS3',
+              value: 6,
+            },
+            {
+              title: 'PHP/MYSQL',
+              value: 4,
+            },
+            {
+              title: 'Vue.js',
+              value: 5,
+            },
+          ],
+        },
+        {
+          category: 'Grafika',
           skills: [
             {
               title: 'Photoshop',
@@ -150,43 +244,14 @@ export default {
           ],
         },
         {
-          category: 'Programming',
+          category: 'Inne',
           skills: [
             {
-              title: 'Javascript',
-              value: 6,
-            },
-            {
-              title: 'HTML5/CSS3',
-              value: 6,
-            },
-            {
-              title: 'PHP/MYSQL',
-              value: 5,
-            },
-            {
-              title: 'Vue.js',
-              value: 6,
-            },
-          ],
-        },
-        {
-          category: 'Other',
-          skills: [
-            {
-              title: 'Graphic Design',
+              title: 'Projektowanie interfejsów',
               value: 5,
             },
             {
               title: 'Marketing',
-              value: 4,
-            },
-            {
-              title: 'Web Design',
-              value: 5,
-            },
-            {
-              title: 'Logo Design',
               value: 4,
             },
           ],

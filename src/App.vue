@@ -44,7 +44,7 @@
             :class="[isMobile ? 'mb-2' : 'mb-3']"
             @click="$vuetify.goTo('#about', options)"
           >
-            <span>About Me</span>
+            <span>O Nas</span>
           </v-btn>
         </div>
         <div>
@@ -54,7 +54,7 @@
             :class="[isMobile ? 'mb-2' : 'mb-3']"
             @click="$vuetify.goTo('#services', options)"
           >
-            <span>Services</span>
+            <span>Oferta</span>
           </v-btn>
         </div>
         <div>
@@ -64,7 +64,7 @@
             :class="[isMobile ? 'mb-2' : 'mb-3']"
             @click="$vuetify.goTo('#experience', options)"
           >
-            <span>Experience</span>
+            <span>Doświadczenie</span>
           </v-btn>
         </div>
         <div>
@@ -74,7 +74,7 @@
             :class="[isMobile ? 'mb-2' : 'mb-3']"
             @click="$vuetify.goTo('#skills', options)"
           >
-            <span>Skills & Education</span>
+            <span>Kompetencje</span>
           </v-btn>
         </div>
         <div>
@@ -94,7 +94,7 @@
             :class="[isMobile ? 'mb-2' : 'mb-3']"
             @click="$vuetify.goTo('#clients', options)"
           >
-            <span>Clients</span>
+            <span>Klienci</span>
           </v-btn>
         </div>
         <div>
@@ -104,7 +104,7 @@
             :class="[isMobile ? 'mb-2' : 'mb-3']"
             @click="$vuetify.goTo('#contact', options)"
           >
-            <span>Contact</span>
+            <span>Kontakt</span>
           </v-btn>
         </div>
 
@@ -115,7 +115,7 @@
             class="white--text mb-3"
             @click="showLogin()"
           >
-            Login
+            Zaloguj
             <v-icon right>mdi-login</v-icon>
           </v-btn>
           <v-btn
@@ -126,7 +126,7 @@
             :disabled="pending"
             @click="logOut()"
           >
-            Logout
+            Wyloguj
             <v-icon right>mdi-logout</v-icon>
           </v-btn>
         </div>
@@ -154,13 +154,13 @@
 
     <v-footer bottom dark dense clipped-right app>
       <v-toolbar-title class="subtitle-1 text-capitalize">
-        <span>Quick</span>
+        <span>Mini</span>
         <span class="font-weight-thin">Menu</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <router-link to="/" class="mr-1">
         <v-btn text :small="isMobile">
-          <span>Home</span>
+          <span>Start</span>
         </v-btn>
       </router-link>
       <router-link to="/blog">
@@ -229,14 +229,14 @@ export default {
       this.login = false;
     },
     logIn() {
-      this.snackText = 'Successful logged in';
+      this.snackText = 'Zalogowano poprawnie';
       this.snackbar = true;
       this.isLogged = true;
       this.login = false;
     },
     logOut() {
       this.pending = true;
-      this.snackText = 'Successful logged out';
+      this.snackText = 'Wylogowano poprawnie';
       setTimeout(() => {
         this.pending = false;
         this.snackbar = true;
@@ -264,6 +264,9 @@ export default {
 <style lang="scss">
 a {
   text-decoration: none;
+}
+strong {
+  color: #ffaa00;
 }
 .logo {
   max-width: 100px;
