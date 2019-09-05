@@ -11,7 +11,7 @@
         class="font-weight-bold primary--text mb-4"
         :class="[isMobile ? 'display-1' : 'display-2']"
       >
-        What I've done
+        Co zrobiliśmy
       </h2>
     </v-col>
     <v-col cols="12">
@@ -33,7 +33,7 @@
               <v-col cols="auto">
                 <div class="mb-3" style="max-width:500px;">
                   <h2 class="primary--text title font-weight-light mb-3">
-                    Project Details
+                    Opis Projektu
                   </h2>
                   <div class="subheading mb-5">
                     In ac felis quis tortor malesuada pretium. Phasellus dolor. Fusce
@@ -43,7 +43,7 @@
                     fermentum odio nec arcu. Integer tincidunt.
                   </div>
                   <h2 class="primary--text title font-weight-light">
-                    Project Info
+                    Szczegóły Projektu
                   </h2>
                   <v-list class="transparent">
                     <v-list-item v-for="(elem, id) in item.info" :key="id">
@@ -87,22 +87,22 @@ export default {
     return {
       portfolio: [
         {
-          title: 'Classic Cafe Rebrand',
-          subtitle: 'Logo Design',
+          title: 'Rebranding Classic Cafe',
+          subtitle: 'Design Logotypu',
           info: [
             {
               icon: 'mdi-account',
-              title: 'Client Name',
+              title: 'Nazwa klienta',
               text: 'Clasic Café',
             },
             {
               icon: 'mdi-calendar',
-              title: 'Project Dates',
+              title: 'Data Projektu',
               text: '07.2019',
             },
             {
               icon: 'mdi-tag',
-              title: 'Project Category',
+              title: 'Kategorie',
               text: 'logo, mockup',
             },
           ],
@@ -110,43 +110,43 @@ export default {
         },
         {
           title: 'Flagship',
-          subtitle: 'Digital Design',
+          subtitle: 'Projekt Strony WWW',
           info: [
             {
               icon: 'mdi-account',
-              title: 'Client Name',
+              title: 'Nazwa klienta',
               text: 'Flagship',
             },
             {
               icon: 'mdi-calendar',
-              title: 'Project Dates',
+              title: 'Data Projektu',
               text: '05.2019',
             },
             {
               icon: 'mdi-tag',
-              title: 'Project Category',
-              text: 'website, design',
+              title: 'Kategorie',
+              text: 'strona www, design',
             },
           ],
           img: require('../assets/flagship.jpg'),
         },
         {
           title: 'Biere Craft Beer',
-          subtitle: 'Marketing and Graphic Design',
+          subtitle: 'Marketing i Design Graficzny',
           info: [
             {
               icon: 'mdi-account',
-              title: 'Client Name',
+              title: 'Nazwa klienta',
               text: 'Biere ®',
             },
             {
               icon: 'mdi-calendar',
-              title: 'Project Dates',
+              title: 'Data Projektu',
               text: '04.2019',
             },
             {
               icon: 'mdi-tag',
-              title: 'Project Category',
+              title: 'Kategorie',
               text: 'marketing, logo, design',
             },
           ],

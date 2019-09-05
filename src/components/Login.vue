@@ -3,7 +3,7 @@
     <v-fade-transition>
       <v-card width="400px" :max-width="isMobile ? '80%' : '100%'" class="mx-auto">
         <v-card-title>
-          <h1 class="display-1 primary--text">Login</h1>
+          <h1 class="display-1 primary--text">Zaloguj</h1>
           <v-spacer></v-spacer>
           <v-btn color="primary" text icon @click="close()">
             <v-icon>mdi-close</v-icon>
@@ -15,7 +15,7 @@
               v-model="username"
               label="Login"
               prepend-icon="mdi-account-circle"
-              hint="Username or E-mail"
+              hint="Nazwa użytkownika lub E-mail"
               :rules="loginRules"
               :loading="pending"
               autofocus
@@ -23,7 +23,7 @@
             ></v-text-field>
             <v-text-field
               v-model="pass"
-              label="Password"
+              label="Hasło"
               prepend-icon="mdi-lock"
               :append-icon="showPass ? 'mdi-eye' : 'mdi-eye-off'"
               :type="showPass ? 'text' : 'password'"
@@ -41,7 +41,7 @@
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn color="grey darken-4">Register</v-btn>
+          <v-btn color="grey darken-4">Zarejestruj</v-btn>
           <v-spacer></v-spacer>
           <v-btn
             color="primary"
@@ -49,7 +49,7 @@
             :disabled="!valid || pending"
             @click="logIn()"
           >
-            Login
+            Zaloguj
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -77,27 +77,27 @@ export default {
       showPass: false,
       username: '',
       loginRules: [
-        v => !!v || 'Login is required',
-        v => (v && v.length >= 3) || 'Login must be more than 3 characters',
+        v => !!v || 'Login jest wymagany',
+        v => (v && v.length >= 3) || 'Login musi mieć co najmniej 3 znaki',
       ],
       usernameRules: [
-        v => !!v || 'Username is required',
-        v => (v && v.length >= 6) || 'Username must be more than 6 characters',
+        v => !!v || 'Nazwa użytkownika jest wymagana',
+        v => (v && v.length >= 6) || 'Nazwa użytkonika musi mieć co najmniej 6 znaków',
       ],
       pass: '',
       passRules: [
-        v => !!v || 'Password is required',
-        v => (v && v.length >= 6) || 'Password must be more than 6 characters',
+        v => !!v || 'Hasło jest wymagane',
+        v => (v && v.length >= 6) || 'Hasło musi mieć co najmniej 6 znaków',
       ],
       name: '',
       nameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length >= 2) || 'Name must be more than 2 characters',
+        v => !!v || 'Imię jest wymagane',
+        v => (v && v.length >= 2) || 'Imię musi mieć co najmniej 2 znaki',
       ],
       email: '',
       emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+        v => !!v || 'E-mail jest wymagany',
+        v => /.+@.+\..+/.test(v) || 'E-mail musi być poprawny',
       ],
       pending: false,
     };
@@ -114,7 +114,7 @@ export default {
           if (this.username === 'admin' && this.pass === 'admin123') {
             this.loginCorrect = true;
           } else {
-            this.errorsArr.push('wrong login or password');
+            this.errorsArr.push('Błędny login lub hasło');
           }
         }
       }

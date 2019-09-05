@@ -11,10 +11,10 @@
         class="font-weight-bold primary--text mb-4"
         :class="[isMobile ? 'display-1' : 'display-2']"
       >
-        What my clients say
+        Co o nas mówią
       </h2>
     </v-col>
-    <v-col cols="12" md="4" v-for="(person, id) in clients" :key="id">
+    <v-col cols="12" md="4" class="mb-md-5" v-for="(person, id) in clients" :key="id">
       <v-sheet class="transparent" :class="[isMobile ? '' : 'ma-5']">
         <v-row class="mx-0">
           <v-icon color="primary" class="display-2">mdi-pause</v-icon>
@@ -29,7 +29,7 @@
               <span class="grey--text">{{ person.company }}</span>
               <v-avatar size="48" color="primary" class="ml-4">
                 <v-img
-                  :src="require(`../assets/client${id + 1}.png`)"
+                  :src="require(`../assets/client${id + 2}.png`)"
                   alt="Client"
                 ></v-img>
               </v-avatar>
@@ -61,29 +61,29 @@ export default {
     return {
       clients: [
         {
-          name: 'J. Williams',
+          name: 'R. Woliński',
           company: 'Motion',
         },
         {
-          name: 'A. Long',
+          name: 'A. Mróz',
           company: 'Classic Café',
         },
         {
-          name: 'M. Hernandez',
+          name: 'M. Głowacka',
           company: 'Flagship',
         },
-        {
-          name: 'L. McCannon',
-          company: 'Motion',
-        },
-        {
-          name: 'A. Mah',
-          company: 'Classic Café',
-        },
-        {
-          name: 'H. Russo',
-          company: 'Biere',
-        },
+        // {
+        //   name: 'L. McCannon',
+        //   company: 'Motion',
+        // },
+        // {
+        //   name: 'A. Mah',
+        //   company: 'Classic Café',
+        // },
+        // {
+        //   name: 'H. Russo',
+        //   company: 'Biere',
+        // },
       ],
     };
   },

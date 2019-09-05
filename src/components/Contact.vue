@@ -5,32 +5,43 @@
         class="font-weight-bold primary--text mb-4"
         :class="[isMobile ? 'display-1' : 'display-2']"
       >
-        Let's talk
+        Poznajmy się
       </h2>
     </v-col>
     <v-col cols="12" md="5" class="mb-4 pe-md-5">
       <h2 class="primary--text title font-weight-light text-uppercase">
-        What can I do for you?
+        Oferta współpracy
       </h2>
       <div class="subheading mb-5 mb-5">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sest interdum, pharetra
-        magna ac, facilisis ante. Fusce eu finibus magna. Fusce vel est interdum, pharetra
-        magna ac, facilisis ante. Fusce eu finibus magna.
+        Jesteśmy elastyczni w sprawach współpracy i staramy się, <br />
+        aby klient był zawsze zadowolony z efektów jakie wspólnie wypracowujemy.
       </div>
       <h2 class="primary--text title font-weight-light text-uppercase mb-3">
-        Send me a Message
+        Wyślij wiadomość
       </h2>
       <v-form>
-        <v-text-field label="Name" single-line solo solo-inverted flat></v-text-field>
+        <v-text-field
+          label="Imię i Nazwisko"
+          single-line
+          solo
+          solo-inverted
+          flat
+        ></v-text-field>
         <v-text-field label="Email" single-line solo solo-inverted flat></v-text-field>
-        <v-text-field label="Subject" single-line solo solo-inverted flat></v-text-field>
-        <v-textarea label="Message" single-line solo solo-inverted flat></v-textarea>
-        <v-btn color="primary">Contact me</v-btn>
+        <v-text-field
+          label="Nazwa firmy"
+          single-line
+          solo
+          solo-inverted
+          flat
+        ></v-text-field>
+        <v-textarea label="Wiadomość" single-line solo solo-inverted flat></v-textarea>
+        <v-btn color="primary">Wyślij</v-btn>
       </v-form>
     </v-col>
     <v-col cols="12" md="4" class="text-left">
       <h2 class="primary--text title font-weight-light text-uppercase">
-        Social Contacts
+        Dane kontaktowe
       </h2>
       <div class="my-4">
         <a
@@ -51,7 +62,7 @@
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title class="primary--text">
-              Address
+              Adres
             </v-list-item-title>
             <v-list-item-subtitle>
               Rogalińska 23d/8
@@ -79,7 +90,7 @@
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title class="primary--text">
-              Phone
+              Telefon
             </v-list-item-title>
             <v-list-item-subtitle>
               (+48) 883 543 667
