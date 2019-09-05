@@ -24,6 +24,7 @@
           src="./assets/logo.png"
           alt="LOGO"
           class="logo"
+          :class="{ mobile: isMobile }"
           @click="$vuetify.goTo('#hero', options)"
         />
         <div class="font-fira-sans mb-0" :class="[isMobile ? 'headline' : 'display-1']">
@@ -107,7 +108,7 @@
           </v-btn>
         </div>
 
-        <div class="mt-auto">
+        <div class="my-auto">
           <v-btn
             v-if="!isLogged"
             color="primary accent-4"
@@ -130,7 +131,7 @@
           </v-btn>
         </div>
 
-        <div class="mt-auto">
+        <div class="mt-auto" v-if="!isMobile">
           <div class="my-4">
             <a
               v-for="(icon, index) in icons"
@@ -158,12 +159,12 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <router-link to="/" class="mr-1">
-        <v-btn text>
+        <v-btn text :small="isMobile">
           <span>Home</span>
         </v-btn>
       </router-link>
       <router-link to="/blog">
-        <v-btn text>
+        <v-btn text :small="isMobile">
           <span>Blog</span>
         </v-btn>
       </router-link>
@@ -265,6 +266,9 @@ a {
   max-width: 100px;
   cursor: pointer;
   filter: drop-shadow(2px 4px 6px black);
+  &.mobile {
+    max-width: 85px;
+  }
 }
 .font-fira-sans {
   font-family: 'Fira Sans', 'Roboto', sans-serif !important;

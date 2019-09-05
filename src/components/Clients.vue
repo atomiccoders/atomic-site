@@ -15,7 +15,7 @@
       </h2>
     </v-col>
     <v-col cols="12" md="4" v-for="(person, id) in clients" :key="id">
-      <v-sheet class="transparent ma-5">
+      <v-sheet class="transparent" :class="[isMobile ? '' : 'ma-5']">
         <v-row class="mx-0">
           <v-icon color="primary" class="display-2">mdi-pause</v-icon>
           <div class="pt-3 font-italic">
