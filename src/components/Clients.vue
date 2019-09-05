@@ -14,7 +14,7 @@
         What my clients say
       </h2>
     </v-col>
-    <v-col cols="12" md="4" v-for="n in 6" :key="n">
+    <v-col cols="12" md="4" v-for="(person, id) in clients" :key="id">
       <v-sheet class="transparent ma-5">
         <v-row class="mx-0">
           <v-icon color="primary" class="display-2">mdi-pause</v-icon>
@@ -24,11 +24,14 @@
               ullamcorper fringilla risus et lacinia.Aliquam eget lacus a libero.
             </p>
             <v-row align="center" justify="end">
-              <span class="primary--text">J. Williams</span>
+              <span class="primary--text">{{ person.name }}</span>
               &nbsp;|&nbsp;
-              <span class="grey--text">Motion</span>
+              <span class="grey--text">{{ person.company }}</span>
               <v-avatar size="48" color="primary" class="ml-4">
-                <v-img src="../assets/client2.png" alt="Client"></v-img>
+                <v-img
+                  :src="require(`../assets/client${id + 1}.png`)"
+                  alt="Client"
+                ></v-img>
               </v-avatar>
             </v-row>
           </div>
@@ -54,6 +57,36 @@
 import WindowInstanceMap from '../windowInstanceMap.js';
 
 export default {
+  data() {
+    return {
+      clients: [
+        {
+          name: 'J. Williams',
+          company: 'Motion',
+        },
+        {
+          name: 'A. Long',
+          company: 'Classic Café',
+        },
+        {
+          name: 'M. Hernandez',
+          company: 'Flagship',
+        },
+        {
+          name: 'L. McCannon',
+          company: 'Motion',
+        },
+        {
+          name: 'A. Mah',
+          company: 'Classic Café',
+        },
+        {
+          name: 'H. Russo',
+          company: 'Biere',
+        },
+      ],
+    };
+  },
   computed: {
     isMobile() {
       return WindowInstanceMap.windowWidth <= 600;
