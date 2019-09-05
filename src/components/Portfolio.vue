@@ -106,7 +106,7 @@ export default {
               text: 'logo, mockup',
             },
           ],
-          img: '/img/classic-cafe.4508ffb5.png',
+          img: require('../assets/classic-cafe.png'),
         },
         {
           title: 'Flagship',
@@ -128,7 +128,7 @@ export default {
               text: 'website, design',
             },
           ],
-          img: '/img/flagship.2b208237.jpg',
+          img: require('../assets/flagship.jpg'),
         },
         {
           title: 'Biere Craft Beer',
@@ -150,7 +150,7 @@ export default {
               text: 'marketing, logo, design',
             },
           ],
-          img: '/img/biere.d967f040.jpg',
+          img: require('../assets/biere.jpg'),
         },
       ],
     };
