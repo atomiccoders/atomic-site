@@ -36,11 +36,7 @@
                     Opis Projektu
                   </h2>
                   <div class="subheading mb-5">
-                    In ac felis quis tortor malesuada pretium. Phasellus dolor. Fusce
-                    fermentum odio nec arcu. Integer tincidunt. Cum sociis natoque
-                    penatibus et magnis dis parturient montes, nascetur ridiculus mus. In
-                    ac felis quis tortor malesuada pretium. Phasellus dolor. Fusce
-                    fermentum odio nec arcu. Integer tincidunt.
+                    {{ item.description }}
                   </div>
                   <h2 class="primary--text title font-weight-light">
                     Szczegóły Projektu
@@ -87,13 +83,15 @@ export default {
     return {
       portfolio: [
         {
-          title: 'Rebranding Classic Cafe',
-          subtitle: 'Design Logotypu',
+          title: 'Aplikacja Spacer',
+          subtitle: 'Single Page Application',
+          description:
+            'Wyszukuj i przeglądaj zdjęcia obiektów kosmicznych takich jak gwiazdy, galaktyki i czarne dziury. Poznaj historię stojącą za każdym zdjęciem w zbiorach NASA. Zobacz niesamowite miejsca o których nawet nie śniłeś. Zacznij już dziś swój własny podbój kosmosu!',
           info: [
             {
               icon: 'mdi-account',
               title: 'Nazwa klienta',
-              text: 'Clasic Café',
+              text: 'NASA',
             },
             {
               icon: 'mdi-calendar',
@@ -103,19 +101,21 @@ export default {
             {
               icon: 'mdi-tag',
               title: 'Kategorie',
-              text: 'logo, mockup',
+              text: 'aplikacje, spa',
             },
           ],
-          img: require('../assets/classic-cafe.png'),
+          img: require('../assets/portfolio/spacer-mockup.png'),
         },
         {
-          title: 'Flagship',
+          title: 'FLOW Communication',
           subtitle: 'Projekt Strony WWW',
+          description:
+            'Nowoczesność i minimalim w jednym miejscu. Profesjonalna i przejrzysta strona internetowa firmy, do której klienci z chęcią będą wracać wiele razy.',
           info: [
             {
               icon: 'mdi-account',
               title: 'Nazwa klienta',
-              text: 'Flagship',
+              text: 'FLOW',
             },
             {
               icon: 'mdi-calendar',
@@ -128,16 +128,18 @@ export default {
               text: 'strona www, design',
             },
           ],
-          img: require('../assets/flagship.jpg'),
+          img: require('../assets/portfolio/flowcom-mockup.png'),
         },
         {
-          title: 'Biere Craft Beer',
-          subtitle: 'Marketing i Design Graficzny',
+          title: 'Norris Jokes',
+          subtitle: 'Progressive Web App',
+          description:
+            'Ile znasz dowcipów o Chucku Norrisie? Możliwe, że sporo... ale tutaj znajdziesz ich jeszcze więcej! Impreza nie bardzo idzie? Rozkręć ją na wesoło! Mając tą aplikację w kieszeni, znajomi na pewno zapamiętają Cię jako duszę towarzystwa.',
           info: [
             {
               icon: 'mdi-account',
               title: 'Nazwa klienta',
-              text: 'Biere ®',
+              text: 'Jokes co.',
             },
             {
               icon: 'mdi-calendar',
@@ -147,10 +149,10 @@ export default {
             {
               icon: 'mdi-tag',
               title: 'Kategorie',
-              text: 'marketing, logo, design',
+              text: 'aplikacje, pwa',
             },
           ],
-          img: require('../assets/biere.jpg'),
+          img: require('../assets/portfolio/norris-mockup.png'),
         },
       ],
     };
