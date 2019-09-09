@@ -4,8 +4,11 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 import vuetify from './plugins/vuetify';
+import VueParticles from 'vue-particles';
 
 Vue.config.productionTip = false;
+
+Vue.use(VueParticles);
 
 new Vue({
   router,
