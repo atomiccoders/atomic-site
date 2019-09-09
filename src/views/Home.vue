@@ -7,7 +7,7 @@
       <Experience />
       <Skills />
       <Portfolio />
-      <Clients />
+      <!-- <Clients /> -->
       <Contact />
     </v-container>
   </div>

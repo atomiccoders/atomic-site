@@ -17,7 +17,7 @@
     <v-col cols="12">
       <v-carousel
         hide-delimiter-background
-        :show-arrows-on-hover="true"
+        show-arrows
         height="650px"
         class="elevation-0"
       >
@@ -46,11 +46,11 @@
                       <v-list-item-action>
                         <v-icon color="primary">{{ elem.icon }}</v-icon>
                       </v-list-item-action>
-                      <v-list-item-title class="mr-2">
+                      <v-list-item-title class="mr-2 hidden-sm-and-down">
                         {{ elem.title }}
                       </v-list-item-title>
                       <v-list-item-title
-                        class="caption grey--text text--lighten-1 hidden-sm-and-down"
+                        :class="[isMobile ? '' : 'caption grey--text text--lighten-1']"
                       >
                         {{ elem.text }}
                       </v-list-item-title>

@@ -41,19 +41,20 @@
               <div class="mb-3">Miasto</div>
               <div class="mb-3">Email</div>
               <div class="mb-3">Telefon</div>
-              <div>Skype</div>
+              <!-- <div>Skype</div> -->
             </v-col>
             <v-col cols="6" class="subheading text-no-wrap">
               <div class="mb-3">Gdańsk</div>
               <div
+                style="cursor:pointer;"
                 class="mb-3"
                 :class="{ 'text-truncate': !showEmail }"
                 @click="showEmail = !showEmail"
               >
-                kubektkd@gmail.com
+                kontakt@atomiccode.pl
               </div>
               <div class="mb-3">(+48) 883 543 667</div>
-              <div>KubekTKD</div>
+              <!-- <div>JMichniewicz</div> -->
             </v-col>
           </v-row>
         </v-col>

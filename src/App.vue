@@ -87,7 +87,7 @@
             <span>Portfolio</span>
           </v-btn>
         </div>
-        <div>
+        <!-- <div>
           <v-btn
             text
             class="text-capitalize subheading font-weight-light"
@@ -96,7 +96,7 @@
           >
             <span>Klienci</span>
           </v-btn>
-        </div>
+        </div> -->
         <div>
           <v-btn
             text
