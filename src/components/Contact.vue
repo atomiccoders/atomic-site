@@ -62,12 +62,10 @@
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title class="primary--text">
-              Adres
+              Lokalizacja
             </v-list-item-title>
             <v-list-item-subtitle>
-              Rogalińska 23d/8
-              <br />
-              80-809 Gdańsk
+              Gdańsk, Polska
             </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>

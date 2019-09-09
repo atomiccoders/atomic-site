@@ -17,7 +17,7 @@
     <v-col cols="12" md="4" class="mb-md-5" v-for="(person, id) in clients" :key="id">
       <v-sheet class="transparent" :class="[isMobile ? '' : 'ma-5']">
         <v-row class="mx-0">
-          <v-icon color="primary" class="display-2">mdi-pause</v-icon>
+          <v-icon color="primary" class="display-2">mdi-format-quote-close</v-icon>
           <div class="pt-3 font-italic">
             <p class="subheading font-weight-light">
               Aliquam sit amet eros id lorem posuere lobortis ut id enim. Proin
