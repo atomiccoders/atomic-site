@@ -39,6 +39,7 @@
 
         <div>
           <v-btn
+            to="/#about"
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
@@ -49,6 +50,7 @@
         </div>
         <div>
           <v-btn
+            to="/#services"
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
@@ -59,6 +61,7 @@
         </div>
         <div>
           <v-btn
+            to="/#experience"
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
@@ -69,6 +72,7 @@
         </div>
         <div>
           <v-btn
+            to="/#skills"
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
@@ -79,6 +83,7 @@
         </div>
         <div>
           <v-btn
+            to="/#portfolio"
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
@@ -89,6 +94,7 @@
         </div>
         <!-- <div>
           <v-btn
+            to="/#clients"
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
@@ -99,6 +105,7 @@
         </div> -->
         <div>
           <v-btn
+            to="/#contact"
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
@@ -152,7 +159,7 @@
       <router-view></router-view>
     </v-content>
 
-    <v-footer bottom dark dense clipped-right app>
+    <v-footer bottom dark dense clipped-right inset app>
       <v-toolbar-title class="subtitle-1 text-capitalize">
         <span>Mini</span>
         <span class="font-weight-thin">Menu</span>

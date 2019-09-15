@@ -38,7 +38,7 @@
         <v-col cols="12" md="4">
           <v-row align="center">
             <v-col cols="6" class="text-uppercase primary--text font-weight-medium">
-              <div class="mb-3">Miasto</div>
+              <div class="mb-3">Lokalizacja</div>
               <div class="mb-3">Email</div>
               <div class="mb-3">Telefon</div>
               <!-- <div>Skype</div> -->
@@ -93,7 +93,7 @@ export default {
 <style lang="scss" scoped>
 .abstract-1 {
   position: absolute !important;
-  left: -48px;
+  left: 0px;
   top: -48px;
   z-index: 0 !important;
   & ~ * {
