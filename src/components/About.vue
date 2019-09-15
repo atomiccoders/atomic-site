@@ -28,32 +28,30 @@
               Nasze doświadczenie w tworzeniu stron internetowych to ponad
               <strong><big>10</big></strong> lat.
             </p>
-            <v-img
+            <!-- <v-img
               src="https://material-portfolio-dark.vuetifyjs.com/img/signature.0302022c.png"
               width="150px"
               class="ml-auto"
-            ></v-img>
+            ></v-img> -->
           </div>
         </v-col>
         <v-col cols="12" md="4">
           <v-row align="center">
-            <v-col cols="6" class="text-uppercase primary--text font-weight-medium">
-              <div class="mb-3">Lokalizacja</div>
-              <div class="mb-3">Email</div>
+            <v-col
+              cols="5"
+              class="text-uppercase primary--text font-weight-medium caption"
+            >
+              <!-- <div class="mb-3">Miasto</div> -->
               <div class="mb-3">Telefon</div>
+              <div class="mb-3">Email</div>
               <!-- <div>Skype</div> -->
             </v-col>
-            <v-col cols="6" class="subheading text-no-wrap">
-              <div class="mb-3">Gdańsk</div>
-              <div
-                style="cursor:pointer;"
-                class="mb-3"
-                :class="{ 'text-truncate': !showEmail }"
-                @click="showEmail = !showEmail"
-              >
+            <v-col cols="7" class="subheading text-no-wrap">
+              <!-- <div class="mb-3">Gdańsk</div> -->
+              <div class="mb-3">(+48) 883 543 667</div>
+              <div style="cursor:pointer;" class="mb-3">
                 kontakt@atomiccode.pl
               </div>
-              <div class="mb-3">(+48) 883 543 667</div>
               <!-- <div>JMichniewicz</div> -->
             </v-col>
           </v-row>
