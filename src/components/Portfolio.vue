@@ -30,7 +30,7 @@
               <span class="subheading">{{ item.subtitle }}</span>
             </div>
             <v-row>
-              <v-col cols="auto">
+              <v-col>
                 <div class="mb-3" style="max-width:500px;">
                   <h2 class="primary--text title font-weight-light mb-3">
                     Opis Projektu
