@@ -111,9 +111,9 @@
     <vue-particles
       v-if="toggleParticles"
       color="#dedede"
-      particleOpacity="0.5"
+      :particleOpacity="0.5"
       size="5"
-      moveSpeed="4"
+      :moveSpeed="4"
     ></vue-particles>
   </section>
 </template>
