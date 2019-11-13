@@ -25,7 +25,7 @@
           alt="LOGO"
           class="logo"
           :class="{ mobile: isMobile }"
-          @click="$vuetify.goTo('#hero', options)"
+          @click="goTo('#hero')"
         />
         <div class="font-fira-sans mb-0" :class="[isMobile ? 'headline' : 'display-1']">
           <span class="primary--text">Atomic</span>Code
@@ -39,55 +39,55 @@
 
         <div>
           <v-btn
-            to="/#about"
+            to="/"
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="$vuetify.goTo('#about', options)"
+            @click="goTo('#about')"
           >
             <span>O Nas</span>
           </v-btn>
         </div>
         <div>
           <v-btn
-            to="/#services"
+            to="/"
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="$vuetify.goTo('#services', options)"
+            @click="goTo('#services')"
           >
             <span>Oferta</span>
           </v-btn>
         </div>
         <div>
           <v-btn
-            to="/#experience"
+            to="/"
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="$vuetify.goTo('#experience', options)"
+            @click="goTo('#experience')"
           >
             <span>Doświadczenie</span>
           </v-btn>
         </div>
         <div>
           <v-btn
-            to="/#skills"
+            to="/"
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="$vuetify.goTo('#skills', options)"
+            @click="goTo('#skills')"
           >
             <span>Kompetencje</span>
           </v-btn>
         </div>
         <div>
           <v-btn
-            to="/#portfolio"
+            to="/"
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="$vuetify.goTo('#portfolio', options)"
+            @click="goTo('#portfolio')"
           >
             <span>Portfolio</span>
           </v-btn>
@@ -98,20 +98,30 @@
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="$vuetify.goTo('#clients', options)"
+            @click="goTo('#clients')"
           >
             <span>Klienci</span>
           </v-btn>
         </div> -->
         <div>
           <v-btn
-            to="/#contact"
+            to="/"
             text
             class="text-capitalize subheading font-weight-light"
             :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="$vuetify.goTo('#contact', options)"
+            @click="goTo('#contact')"
           >
             <span>Kontakt</span>
+          </v-btn>
+        </div>
+        <div v-if="isLogged">
+          <v-btn
+            to="/my-account"
+            text
+            class="text-capitalize subheading font-weight-light primary--text"
+            :class="[isMobile ? 'mb-2' : 'mb-3']"
+          >
+            <span>Moje konto</span>
           </v-btn>
         </div>
 
@@ -156,7 +166,9 @@
     </v-navigation-drawer>
 
     <v-content class="hide-overflow" ref="content">
-      <router-view></router-view>
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
     </v-content>
 
     <v-footer bottom dark dense clipped-right inset app>
@@ -165,16 +177,12 @@
         <span class="font-weight-thin">Menu</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <router-link to="/" class="mr-1">
-        <v-btn text :small="isMobile">
-          <span>Start</span>
-        </v-btn>
-      </router-link>
-      <router-link to="/blog">
-        <v-btn text :small="isMobile">
-          <span>Blog</span>
-        </v-btn>
-      </router-link>
+      <v-btn to="/" class="mr-1" text :small="isMobile">
+        <span>Start</span>
+      </v-btn>
+      <v-btn to="/blog" text :small="isMobile">
+        <span>Blog</span>
+      </v-btn>
       <v-btn text @click.stop="drawer = !drawer">
         <v-icon v-if="isMobile && drawer">mdi-close</v-icon>
         <v-icon v-else>mdi-menu</v-icon>
@@ -226,6 +234,21 @@ export default {
     },
   },
   methods: {
+    goTo(target) {
+      if (
+        (this.$store.getters.getBeforeRoute === null &&
+          this.$store.getters.getCurrentRoute === 'home') ||
+        (this.$store.getters.getBeforeRoute === 'home' &&
+          this.$store.getters.getCurrentRoute !== 'blog')
+      ) {
+        this.$vuetify.goTo(target, this.options);
+      } else {
+        setTimeout(() => {
+          this.$vuetify.goTo(target, this.options);
+          this.$store.dispatch('updateBeforeRoute', this.$route.name);
+        }, 1000);
+      }
+    },
     showLogin() {
       if (this.isMobile) {
         this.drawer = false;
@@ -289,5 +312,22 @@ strong {
 .v-window__prev,
 .v-window__next {
   top: calc(90% - 20px) !important;
+}
+.v-btn:before {
+  background-color: transparent;
+}
+
+/*** TRANSITIONS ***/
+.fade-enter {
+  opacity: 0;
+  transform: translateX(25px);
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s ease-out;
+}
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(25px);
 }
 </style>
