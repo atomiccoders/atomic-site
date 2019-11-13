@@ -60,9 +60,9 @@
     </v-col>
     <v-col col="5" class="hidden-sm-and-down text-right text-uppercase">
       <div class="display-1">Jakub Michniewicz</div>
-      <span class="primary--text headline font-weight-light">Front-end Developer</span>
+      <span class="primary--text headline font-weight-light">Web Developer</span>
       <v-img
-        src="../assets/person.png"
+        src="../assets/my-person.png"
         contain
         height="900px"
         style="position:absolute;top:250px;right:0px;"
