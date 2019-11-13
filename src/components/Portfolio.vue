@@ -18,7 +18,7 @@
       <v-carousel
         hide-delimiter-background
         show-arrows
-        height="650px"
+        height="605px"
         class="elevation-0"
       >
         <v-carousel-item v-for="(item, idx) in portfolio" :key="idx">
@@ -38,13 +38,30 @@
                   <div class="subheading mb-5">
                     {{ item.description }}
                   </div>
-                  <h2 class="primary--text title font-weight-light">
+                  <h2 class="primary--text title font-weight-light d-inline">
                     Szczegóły Projektu
                   </h2>
+                  <div class="d-inline ml-3">
+                    <v-btn
+                      v-if="item.link.length"
+                      :href="item.link"
+                      target="_blank"
+                      color="primary"
+                      fab
+                      x-small
+                    >
+                      <v-icon>mdi-open-in-new</v-icon>
+                    </v-btn>
+                  </div>
                   <v-list class="transparent">
                     <v-list-item v-for="(elem, id) in item.info" :key="id">
                       <v-list-item-action>
-                        <v-icon color="primary">{{ elem.icon }}</v-icon>
+                        <v-tooltip bottom>
+                          <template v-slot:activator="{ on }">
+                            <v-icon color="primary" v-on="on">{{ elem.icon }}</v-icon>
+                          </template>
+                          <span>{{ elem.title }}</span>
+                        </v-tooltip>
                       </v-list-item-action>
                       <v-list-item-title class="mr-2 hidden-sm-and-down">
                         {{ elem.title }}
@@ -86,12 +103,13 @@ export default {
           title: 'Aplikacja Spacer',
           subtitle: 'Single Page Application',
           description:
-            'Wyszukuj i przeglądaj zdjęcia obiektów kosmicznych takich jak gwiazdy, galaktyki i czarne dziury. Poznaj historię stojącą za każdym zdjęciem w zbiorach NASA. Zobacz niesamowite miejsca o których nawet nie śniłeś. Zacznij już dziś swój własny podbój kosmosu!',
+            'Wyszukuj i przeglądaj zdjęcia obiektów kosmicznych takich jak gwiazdy, galaktyki i czarne dziury. Poznaj historię stojącą za każdym zdjęciem w zbiorach NASA. Zobacz niesamowite miejsca, o których nawet nie śniłeś. Zacznij już dziś swój własny podbój kosmosu!',
+          link: 'http://spacer.atomiccode.pl',
           info: [
             {
               icon: 'mdi-account',
               title: 'Nazwa klienta',
-              text: 'NASA',
+              text: 'Astro-Edu',
             },
             {
               icon: 'mdi-calendar',
@@ -111,6 +129,7 @@ export default {
           subtitle: 'Projekt Strony WWW',
           description:
             'Nowoczesność i minimalim w jednym miejscu. Profesjonalna i przejrzysta strona internetowa firmy, do której klienci z chęcią będą wracać wiele razy.',
+          link: 'http://flowcom.pl',
           info: [
             {
               icon: 'mdi-account',
@@ -135,6 +154,7 @@ export default {
           subtitle: 'Progressive Web App',
           description:
             'Ile znasz dowcipów o Chucku Norrisie? Możliwe, że sporo... ale tutaj znajdziesz ich jeszcze więcej! Impreza nie bardzo idzie? Rozkręć ją na wesoło! Mając tą aplikację w kieszeni, znajomi na pewno zapamiętają Cię jako duszę towarzystwa.',
+          link: '',
           info: [
             {
               icon: 'mdi-account',
