@@ -26,13 +26,11 @@
       </v-col>
       <v-col cols="12" md="6">
         <p class="font-weight-light grey--text text--lighten-1 text-center text-md-left">
-          Jeśli tu traiłeś, to znaczy, że deweloper coś popsuł...
-          <span class="primary--text">;)</span>
+          Przepraszamy, strona na którą trafiłeś nie istnieje ...
         </p>
         <p class="font-weight-light grey--text text--lighten-1 text-center text-md-left">
-          Daj nam znać -
-          <a href="mailto:kontakt@atomiccode.pl">kontakt@atomiccode.pl</a> - postaramy się
-          to szybko naprawić
+          Upewnij się, że adres URL jest poprawny lub przejdź na
+          <router-link to="/">stronę główną</router-link>
         </p>
       </v-col>
     </v-row>

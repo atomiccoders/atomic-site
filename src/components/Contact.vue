@@ -98,7 +98,7 @@
       </v-list>
     </v-col>
     <v-img
-      src="../assets/person-alt.png"
+      src="../assets/my-person-alt.png"
       width="100%"
       max-width="30vw"
       style="position:absolute; bottom:-20px; right:0"
