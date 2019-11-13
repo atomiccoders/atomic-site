@@ -15,8 +15,7 @@
           <v-card class="pa-3">
             <h3 class="subheading font-weight-bold primary--text">{{ item.title }}</h3>
             <div>
-              Lorem ipsum dolor sit amet, eum ex saperet euripidis. Amet consetetur
-              conclusionemque eum id, eros petentium eam cu.
+              {{ item.description }}
             </div>
           </v-card>
         </v-timeline-item>
@@ -35,18 +34,25 @@ export default {
         {
           title: 'JojoMobile',
           year: 2014,
+          description: 'Testowanie aplikacji na urządzenia mobilne',
         },
         {
           title: 'BetterSoftware Group',
           year: 2015,
+          description:
+            'Tworzenie aplkacji na urządzenia mobilne z systemem WindowsPhone, Android i iOS',
         },
         {
           title: 'Lek-Med.pl / FLOW',
           year: 2016,
+          description:
+            'Tworzenie stron internetowych wraz z dostosowanym systemem zarządzania treścią',
         },
         {
           title: 'Tapptic',
           year: 2019,
+          description:
+            'Tworzenie aplikacji webowych oraz praca nad UI/UX wielu międzynarodowych projektów',
         },
       ],
     };
