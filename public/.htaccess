@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+# WWW to non-WWW
+  RewriteCond %{HTTP_HOST} ^www.atomiccode.pl$ [NC]
+  RewriteRule ^(.*)$ http://atomiccode.pl/$1 [R=301,L]
+
+# HTTP to HTTPS
+  RewriteCond %{SERVER_PORT} 80
+  RewriteRule ^(.*)$ https://atomiccode.pl/$1 [R,L]
+
+# VUE index.html fix
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>

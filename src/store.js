@@ -3,15 +3,21 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+const UPDATE_DRAWER_STATE = 'UPDATE_DRAWER_STATE';
 const UPDATE_CURRENT_ROUTE = 'UPDATE_CURRENT_ROUTE';
 const UPDATE_BEFORE_ROUTE = 'UPDATE_BEFORE_ROUTE';
 
 export default new Vuex.Store({
   state: {
+    drawerState: null,
     currentRoute: '',
     beforeRoute: '',
+    userLogged: false,
   },
   mutations: {
+    [UPDATE_DRAWER_STATE](state, drawerState) {
+      state.drawerState = drawerState;
+    },
     [UPDATE_CURRENT_ROUTE](state, route) {
       state.currentRoute = route;
     },
@@ -20,6 +26,9 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    updateDrawerState({ commit }, drawerState) {
+      commit(UPDATE_DRAWER_STATE, drawerState);
+    },
     updateCurrentRoute({ commit }, route) {
       commit(UPDATE_CURRENT_ROUTE, route);
     },
@@ -28,7 +37,9 @@ export default new Vuex.Store({
     },
   },
   getters: {
+    getDrawerState: state => state.drawerState,
     getCurrentRoute: state => state.currentRoute,
     getBeforeRoute: state => state.beforeRoute,
+    isUserLogged: state => state.userLogged,
   },
 });

@@ -13,157 +13,13 @@
       </v-btn>
     </v-snackbar>
 
-    <v-navigation-drawer
-      class="text-center"
-      app
-      v-model="drawer"
-      style="background-color: rgb(24, 24, 24); border-color: rgb(24, 24, 24);"
-    >
-      <div class="row flex-column fill-height py-5 mx-0 align-center justify-center">
-        <img
-          src="./assets/logo.png"
-          alt="LOGO"
-          class="logo"
-          :class="{ mobile: isMobile }"
-          @click="goTo('#hero')"
-        />
-        <div class="font-fira-sans mb-0" :class="[isMobile ? 'headline' : 'display-1']">
-          <span class="primary--text">Atomic</span>Code
-        </div>
-        <span
-          class="font-fira-sans subtitle-2 text-uppercase font-weight-light"
-          :class="[isMobile ? 'mb-5' : 'mb-10']"
-        >
-          every pixel matters
-        </span>
-
-        <div>
-          <v-btn
-            to="/"
-            text
-            class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="goTo('#about')"
-          >
-            <span>O Nas</span>
-          </v-btn>
-        </div>
-        <div>
-          <v-btn
-            to="/"
-            text
-            class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="goTo('#services')"
-          >
-            <span>Oferta</span>
-          </v-btn>
-        </div>
-        <div>
-          <v-btn
-            to="/"
-            text
-            class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="goTo('#experience')"
-          >
-            <span>Doświadczenie</span>
-          </v-btn>
-        </div>
-        <div>
-          <v-btn
-            to="/"
-            text
-            class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="goTo('#skills')"
-          >
-            <span>Kompetencje</span>
-          </v-btn>
-        </div>
-        <div>
-          <v-btn
-            to="/"
-            text
-            class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="goTo('#portfolio')"
-          >
-            <span>Portfolio</span>
-          </v-btn>
-        </div>
-        <!-- <div>
-          <v-btn
-            to="/#clients"
-            text
-            class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="goTo('#clients')"
-          >
-            <span>Klienci</span>
-          </v-btn>
-        </div> -->
-        <div>
-          <v-btn
-            to="/"
-            text
-            class="text-capitalize subheading font-weight-light"
-            :class="[isMobile ? 'mb-2' : 'mb-3']"
-            @click="goTo('#contact')"
-          >
-            <span>Kontakt</span>
-          </v-btn>
-        </div>
-        <div v-if="isLogged">
-          <v-btn
-            to="/my-account"
-            text
-            class="text-capitalize subheading font-weight-light primary--text"
-            :class="[isMobile ? 'mb-2' : 'mb-3']"
-          >
-            <span>Moje konto</span>
-          </v-btn>
-        </div>
-
-        <div class="my-auto">
-          <v-btn
-            v-if="!isLogged"
-            color="primary accent-4"
-            class="white--text mb-3"
-            @click="showLogin()"
-          >
-            Zaloguj
-            <v-icon right>mdi-login</v-icon>
-          </v-btn>
-          <v-btn
-            v-else
-            color="primary accent-4"
-            class="white--text mb-3"
-            :loading="pending"
-            :disabled="pending"
-            @click="logOut()"
-          >
-            Wyloguj
-            <v-icon right>mdi-logout</v-icon>
-          </v-btn>
-        </div>
-
-        <div class="mt-auto" v-if="!isMobile">
-          <div class="my-4">
-            <a
-              v-for="(icon, index) in icons"
-              :key="index"
-              :href="icon.url"
-              :title="icon.title"
-              target="_blank"
-              class="mx-2"
-            >
-              <v-icon>{{ icon.icon }}</v-icon>
-            </a>
-          </div>
-        </div>
-      </div>
-    </v-navigation-drawer>
+    <NavDrawer
+      :frontLogIn="frontLogIn"
+      :is-logged="isLogged"
+      :pending="pending"
+      @showLogin="showLogin()"
+      @logOut="logOut()"
+    />
 
     <v-content class="hide-overflow" ref="content">
       <transition name="fade" mode="out-in">
@@ -171,84 +27,48 @@
       </transition>
     </v-content>
 
-    <v-footer bottom dark dense clipped-right inset app>
-      <v-toolbar-title class="subtitle-1 text-capitalize">
-        <span>Mini</span>
-        <span class="font-weight-thin">Menu</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn to="/" class="mr-1" text :small="isMobile">
-        <span>Start</span>
-      </v-btn>
-      <v-btn to="/blog" text :small="isMobile">
-        <span>Blog</span>
-      </v-btn>
-      <v-btn text @click.stop="drawer = !drawer">
-        <v-icon v-if="isMobile && drawer">mdi-close</v-icon>
-        <v-icon v-else>mdi-menu</v-icon>
-      </v-btn>
-    </v-footer>
+    <Footer />
   </v-app>
 </template>
 
 <script>
-import WindowInstanceMap from './windowInstanceMap.js';
+import Utils from '@/utils';
 import * as easings from 'vuetify/es5/services/goto/easing-patterns';
 import Login from './components/Login';
+import NavDrawer from './views/Common/NavDrawer';
+import Footer from './views/Common/Footer';
 
 export default {
   name: 'App',
   components: {
     Login,
+    NavDrawer,
+    Footer,
   },
-  data: () => ({
-    drawer: null,
-    overlay: false,
-    icons: [
-      {
-        title: 'Linkedin profile',
-        url: 'https://www.linkedin.com/in/jakubmichniewicz',
-        icon: 'mdi-linkedin-box',
+  data() {
+    return {
+      drawer: this.$store.getters.getDrawerState,
+      overlay: false,
+      options: {
+        duration: 1000,
+        offset: 20,
+        easing: 'easeInOutCubic',
+        easings: Object.keys(easings),
       },
-      {
-        title: 'Github profile',
-        url: 'https://github.com/atomiccoders',
-        icon: 'mdi-github-box',
-      },
-    ],
-    options: {
-      duration: 1000,
-      offset: 20,
-      easing: 'easeInOutCubic',
-      easings: Object.keys(easings),
-    },
-    pending: false,
-    login: false,
-    isLogged: false,
-    snackbar: false,
-    snackText: '',
-  }),
+      pending: false,
+      frontLogIn: this.$config.settings.frontLogIn,
+      login: false,
+      isLogged: false,
+      snackbar: false,
+      snackText: '',
+    };
+  },
   computed: {
     isMobile() {
-      return WindowInstanceMap.windowWidth <= 600;
+      return Utils.isMobile();
     },
   },
   methods: {
-    goTo(target) {
-      if (
-        (this.$store.getters.getBeforeRoute === null &&
-          this.$store.getters.getCurrentRoute === 'home') ||
-        (this.$store.getters.getBeforeRoute === 'home' &&
-          this.$store.getters.getCurrentRoute !== 'blog')
-      ) {
-        this.$vuetify.goTo(target, this.options);
-      } else {
-        setTimeout(() => {
-          this.$vuetify.goTo(target, this.options);
-          this.$store.dispatch('updateBeforeRoute', this.$route.name);
-        }, 1000);
-      }
-    },
     showLogin() {
       if (this.isMobile) {
         this.drawer = false;
@@ -287,6 +107,12 @@ export default {
   },
   beforeMount() {
     this.overlay = true;
+    this.battery = 45;
+  },
+  mounted() {
+    // window.navigator.vibrate([125,75,125,275,200,275,125,75,125,275,200,600,200,600]); //Mario
+    // window.navigator.vibrate([500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500]); //StarWars
+    // window.navigator.vibrate([150,150,150,150,75,75,150,150,150,150,450]); //Go Go Power Rangers
   },
 };
 </script>
@@ -329,5 +155,11 @@ strong {
 .fade-leave-to {
   opacity: 0;
   transform: translateX(25px);
+}
+
+/*** MESSENGER PLUGIN ***/
+.atomic-chat + .fb_dialog {
+  bottom: 22vh !important;
+  transform: scale(0.75) !important;
 }
 </style>

@@ -125,6 +125,7 @@
 </template>
 
 <script>
+import Utils from '@/utils';
 import WindowInstanceMap from '../windowInstanceMap.js';
 
 export default {
@@ -156,108 +157,13 @@ export default {
       //     years: '2010 - 2010',
       //   },
       // ],
-      softSkills: [
-        {
-          category: 'Komunikacja',
-          skills: [
-            {
-              title: 'Relacje B2B',
-              value: 5,
-            },
-            {
-              title: 'Obsługa klienta',
-              value: 6,
-            },
-            {
-              title: 'Odporność na stres',
-              value: 5,
-            },
-            {
-              title: 'Praca w grupie',
-              value: 5,
-            },
-          ],
-        },
-        {
-          category: 'Organizacja',
-          skills: [
-            {
-              title: 'Zarządzanie czasem',
-              value: 6,
-            },
-            {
-              title: 'Delegowanie zadań',
-              value: 5,
-            },
-            {
-              title: 'Dokładność',
-              value: 6,
-            },
-            {
-              title: 'Terminowość',
-              value: 6,
-            },
-          ],
-        },
-      ],
-      hardSkills: [
-        {
-          category: 'Programowanie',
-          skills: [
-            {
-              title: 'Javascript',
-              value: 6,
-            },
-            {
-              title: 'HTML5/CSS3',
-              value: 6,
-            },
-            {
-              title: 'PHP/MYSQL',
-              value: 4,
-            },
-            {
-              title: 'Vue.js',
-              value: 5,
-            },
-          ],
-        },
-        {
-          category: 'Grafika',
-          skills: [
-            {
-              title: 'Photoshop',
-              value: 6,
-            },
-            {
-              title: 'Illustrator',
-              value: 5,
-            },
-            {
-              title: 'Fireworks',
-              value: 4,
-            },
-            {
-              title: 'InDesign',
-              value: 5,
-            },
-          ],
-        },
-        {
-          category: 'Inne',
-          skills: [
-            {
-              title: 'Projektowanie interfejsów',
-              value: 5,
-            },
-            {
-              title: 'Marketing',
-              value: 4,
-            },
-          ],
-        },
-      ],
+      softSkills: [],
+      hardSkills: [],
     };
+  },
+  firebase: {
+    softSkills: Utils.getFirebaseData('softSkills'),
+    hardSkills: Utils.getFirebaseData('hardSkills'),
   },
   computed: {
     isMobile() {

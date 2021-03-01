@@ -25,41 +25,20 @@
 </template>
 
 <script>
-import WindowInstanceMap from '../windowInstanceMap.js';
+import Utils from '@/utils';
 
 export default {
   data() {
     return {
-      items: [
-        {
-          title: 'JojoMobile',
-          year: 2014,
-          description: 'Testowanie aplikacji na urządzenia mobilne',
-        },
-        {
-          title: 'BetterSoftware Group',
-          year: 2015,
-          description:
-            'Tworzenie aplkacji na urządzenia mobilne z systemem WindowsPhone, Android i iOS',
-        },
-        {
-          title: 'Lek-Med.pl / FLOW',
-          year: 2016,
-          description:
-            'Tworzenie stron internetowych wraz z dostosowanym systemem zarządzania treścią',
-        },
-        {
-          title: 'Tapptic',
-          year: 2019,
-          description:
-            'Tworzenie aplikacji webowych oraz praca nad UI/UX wielu międzynarodowych projektów',
-        },
-      ],
+      items: [],
     };
+  },
+  firebase: {
+    items: Utils.getFirebaseData('experience'),
   },
   computed: {
     isMobile() {
-      return WindowInstanceMap.windowWidth <= 600;
+      return Utils.isMobile();
     },
   },
 };

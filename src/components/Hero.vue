@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import WindowInstanceMap from '../windowInstanceMap.js';
+import Utils from '@/utils';
 
 export default {
   name: 'Hero',
@@ -130,7 +130,7 @@ export default {
   },
   computed: {
     isMobile() {
-      return WindowInstanceMap.windowWidth <= 600;
+      return Utils.isMobile();
     },
   },
 };

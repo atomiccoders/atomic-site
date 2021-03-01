@@ -15,14 +15,14 @@
       <v-col cols="12" sm="4" v-for="post in publishedPosts" :key="post.id">
         <v-card class="mx-auto">
           <v-img
-            :src="`https://picsum.photos/600/300/?random=${post.id}`"
+            :src="`https://picsum.photos/id/${post.img}/600/300`"
             height="250"
           ></v-img>
 
           <v-list-item>
             <v-list-item-content>
               <v-list-item-subtitle class="font-weight-light text-right mb-1">
-                <v-icon x-small>mdi-calendar-outline</v-icon>
+                <v-icon x-small class="mr-1">mdi-calendar-outline</v-icon>
                 {{ formatDate(post.posted) }}
               </v-list-item-subtitle>
               <v-list-item-title class="title text-wrap">
@@ -36,13 +36,14 @@
           </v-card-text>
 
           <v-card-actions class="mt-auto">
-            <v-btn text color="primary accent-4" @click="openPost(post.id)">
+            <v-btn text color="primary accent-4" @click="openPost(post.slug)">
               Czytaj więcej
             </v-btn>
 
             <v-spacer></v-spacer>
 
             <v-btn
+              v-if="$store.getters.isUserLogged"
               icon
               :color="post.isLiked ? 'primary' : 'white'"
               @click="post.isLiked = !post.isLiked"
@@ -80,7 +81,7 @@
 
 <script>
 import postArary from '@/assets/posts';
-import WindowInstanceMap from '@/windowInstanceMap.js';
+import Utils from '@/utils';
 
 export default {
   name: 'Blog',
@@ -89,9 +90,12 @@ export default {
       posts: postArary.posts,
     };
   },
+  firebase: {
+    posts: Utils.getFirebaseData('posts').orderByChild('posted'),
+  },
   computed: {
     isMobile() {
-      return WindowInstanceMap.windowWidth <= 600;
+      return Utils.isMobile();
     },
     publishedPosts() {
       return this.posts.filter(post => this.isPublished(post));
@@ -104,8 +108,8 @@ export default {
       const month = date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
       return `${day}-${month}-${date.getFullYear()}`;
     },
-    openPost(id) {
-      this.$router.push({ name: 'post', params: { id } });
+    openPost(slug) {
+      this.$router.push({ name: 'post', params: { slug } });
     },
     isPublished(post) {
       return post.isPublished && new Date(post.posted) <= Date.now();

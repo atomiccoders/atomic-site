@@ -18,16 +18,11 @@
       <v-row justify="space-between">
         <v-col cols="12" md="7">
           <div class="subheading mb-5 mb-0">
-            <p>
-              <strong>AtomicCode</strong> zajmuje się dostarczaniem dla swoich klientów
-              profesjonalnych stron internetowych, bazujących na najnowszych trendach
-              designerskich oraz posiadających przejrzysty i intuicyjny
-              <strong>system zarządzania treścią</strong>.
-            </p>
-            <p>
-              Nasze doświadczenie w tworzeniu stron internetowych to ponad
-              <strong><big>10</big></strong> lat.
-            </p>
+            <p
+              v-for="(paragraph, index) in about"
+              :key="index"
+              v-html="paragraph.content"
+            ></p>
             <!-- <v-img
               src="https://material-portfolio-dark.vuetifyjs.com/img/signature.0302022c.png"
               width="150px"
@@ -48,9 +43,19 @@
             </v-col>
             <v-col cols="7" class="subheading text-no-wrap">
               <!-- <div class="mb-3">Gdańsk</div> -->
-              <div class="mb-3">(+48) 883 543 667</div>
+              <div class="mb-3">
+                <a class="white--text" :href="`phone:${$config.contact.phone}`">
+                  {{ $config.contact.phone }}
+                </a>
+              </div>
               <div style="cursor:pointer;" class="mb-3">
-                kontakt@atomiccode.pl
+                <a
+                  class="white--text cryptedmail"
+                  :data-name="emailArray[0]"
+                  :data-domain="emailArray[1]"
+                  :data-tld="emailArray[2]"
+                  onclick="window.open('mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld, '_blank');"
+                ></a>
               </div>
               <!-- <div>JMichniewicz</div> -->
             </v-col>
@@ -72,17 +77,28 @@
 </template>
 
 <script>
-import WindowInstanceMap from '../windowInstanceMap.js';
+import Utils from '@/utils';
 
 export default {
   data() {
     return {
       showEmail: false,
+      about: [],
     };
+  },
+  firebase: {
+    about: Utils.getFirebaseData('about'),
   },
   computed: {
     isMobile() {
-      return WindowInstanceMap.windowWidth <= 600;
+      return Utils.isMobile();
+    },
+    emailArray() {
+      const array = [];
+      array.push(this.$config.contact.email.split('@')[0]);
+      array.push(this.$config.contact.email.split('@')[1].split('.')[0]);
+      array.push(this.$config.contact.email.split('@')[1].split('.')[1]);
+      return array;
     },
   },
 };
@@ -97,5 +113,8 @@ export default {
   & ~ * {
     z-index: 1 !important;
   }
+}
+.cryptedmail:after {
+  content: attr(data-name) '@' attr(data-domain) '.' attr(data-tld);
 }
 </style>

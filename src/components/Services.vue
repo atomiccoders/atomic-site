@@ -16,13 +16,22 @@
     </v-col>
     <v-col cols="12" md="6">
       <v-expansion-panels popout :value="0">
-        <v-expansion-panel v-for="(item, i) in items" :key="i">
+        <v-expansion-panel v-for="(item, idx) in items" :key="idx">
           <v-expansion-panel-header class="title font-weight-light">
             {{ item.title }}
           </v-expansion-panel-header>
           <v-expansion-panel-content>
             <v-card flat>
-              <v-card-text v-html="item.content"></v-card-text>
+              <v-container>
+                <v-row justify="space-between" align="center">
+                  <v-col cols="4" v-if="!isMobile">
+                    <v-img :src="require(`@/assets/${item.img}`)"></v-img>
+                  </v-col>
+                  <v-col cols="12" sm="8">
+                    <v-card-text v-html="item.content"></v-card-text>
+                  </v-col>
+                </v-row>
+              </v-container>
             </v-card>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -32,38 +41,20 @@
 </template>
 
 <script>
-import WindowInstanceMap from '../windowInstanceMap.js';
+import Utils from '@/utils';
 
 export default {
   data() {
     return {
-      items: [
-        {
-          title: 'Strony internetowe',
-          content:
-            'Oferujemy profesjonalne usługi IT. Specjalizujemy się w tworzeniu responsywnych <strong>stron internetowych</strong> oraz <strong>aplikacji webowych</strong>, będących odpowiedzią na szczególne potrzeby małych i średnich firm oraz jednoosobowych działalności gospodarczych.',
-        },
-        {
-          title: 'Aplikacje',
-          content:
-            'Tworzymy również spersonalizowane, nowoczesne <strong>aplikacje webowe</strong>, mając na uwadze fakt, że coraz więcej klientów wyszukując interesujące ich usługi oferowane przez lokalne firmy, korzysta z urządzeń mobilnych takich jak <strong>smartfony i tablety</strong>.',
-        },
-        {
-          title: 'Marketing',
-          content:
-            'Naszym celem jest tażke umożliwienie firmom zaistnienie w internecie poprzez profesjonalną <strong>stronę www</strong> lub rozpowszechnienie istniejącej już działalności.',
-        },
-        {
-          title: 'Wsparcie',
-          content:
-            'Oferujemy pełne wsparcie naszych <strong>stron i aplikacji</strong>. A to wszystko w przystępnej, dopasowanej <strong>indywidualnie</strong> do Twojej firmy cenie.',
-        },
-      ],
+      items: [],
     };
+  },
+  firebase: {
+    items: Utils.getFirebaseData('offers'),
   },
   computed: {
     isMobile() {
-      return WindowInstanceMap.windowWidth <= 600;
+      return Utils.isMobile();
     },
   },
 };

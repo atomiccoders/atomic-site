@@ -1,6 +1,6 @@
 <template>
-  <v-sheet>
-    <v-parallax height="300" :src="`https://picsum.photos/800/300/?random=${post.id}`">
+  <v-sheet v-if="post" style="background:#303030;">
+    <v-parallax height="300" :src="`https://picsum.photos/id/${post.img}/900/300`">
       <v-row>
         <v-col cols="6">
           <v-btn
@@ -27,23 +27,24 @@
         </v-col>
       </v-row>
     </v-parallax>
-    <v-container py-2 px-5 fluid>
+    <v-container py-2 px-5>
       <v-row>
         <v-col
           cols="12"
           sm="8"
-          class="my-8 mx-2"
+          class="my-8"
           style="min-height: calc(100vh - 370px);"
           v-html="post.text"
         >
         </v-col>
 
-        <v-col>
-          <v-divider v-if="isMobile"></v-divider>
+        <v-col v-if="isMobile">
+          <v-divider></v-divider>
         </v-col>
 
-        <v-col cols="12" sm="3" class="my-8">
-          {{ post.description }}
+        <v-col cols="12" sm="4" class="my-8">
+          <Newsletter />
+          <SocialShare />
         </v-col>
       </v-row>
     </v-container>
@@ -51,27 +52,58 @@
 </template>
 
 <script>
-import postArary from '@/assets/posts';
-import WindowInstanceMap from '@/windowInstanceMap.js';
+import Utils from '@/utils';
+import Newsletter from '../components/Newsletter';
+import SocialShare from '../components/SocialShare';
 
 export default {
   name: 'Post',
+  components: {
+    Newsletter,
+    SocialShare,
+  },
   data() {
     return {
-      id: this.$route.params.id,
+      slug: this.$route.params.slug,
+      posts: [],
+      lastPosts: [],
     };
+  },
+  firebase: {
+    posts: Utils.getFirebaseData('posts'),
+    lastPosts: Utils.getFirebaseData('posts')
+      .orderByChild('posted')
+      .limitToLast(3),
   },
   computed: {
     isMobile() {
-      return WindowInstanceMap.windowWidth <= 600;
+      return Utils.isMobile();
     },
     post() {
-      return postArary.posts[this.id - 1];
+      return this.posts.find(post => post.slug === this.slug);
+    },
+    filteredPosts() {
+      return this.lastPosts.filter(post => post.slug !== this.slug);
     },
   },
   methods: {
     back() {
-      this.$router.go(-1);
+      this.$router.push({ name: 'blog' });
+    },
+    openPost(slug) {
+      this.$router.push({ name: 'post', params: { slug } });
+    },
+    formatDate(jsonDate) {
+      const date = new Date(jsonDate);
+      const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+      const month =
+        date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+      return `${day}-${month}-${date.getFullYear()}`;
+    },
+  },
+  watch: {
+    $route(to, from) {
+      this.post = this.posts.find(post => post.slug === to.params.slug);
     },
   },
 };

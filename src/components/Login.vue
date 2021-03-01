@@ -58,7 +58,8 @@
 </template>
 
 <script>
-import WindowInstanceMap from '../windowInstanceMap.js';
+import md5 from 'md5';
+import Utils from '@/utils';
 
 export default {
   name: 'Login',
@@ -100,7 +101,16 @@ export default {
         v => /.+@.+\..+/.test(v) || 'E-mail musi być poprawny',
       ],
       pending: false,
+      users: [],
     };
+  },
+  firebase: {
+    users: Utils.getFirebaseData('users'),
+  },
+  computed: {
+    isMobile() {
+      return Utils.isMobile();
+    },
   },
   methods: {
     validate() {
@@ -111,10 +121,17 @@ export default {
     logIn() {
       if (this.$refs.form.validate()) {
         if (this.valid) {
-          if (this.username === 'admin' && this.pass === 'admin123') {
-            this.loginCorrect = true;
+          const foundUser = this.users.find(
+            user => user.login === this.username || user.username === this.username
+          );
+          if (foundUser) {
+            if (md5(this.pass) === foundUser.password) {
+              this.loginCorrect = true;
+            } else {
+              this.errorsArr.push('Błędny login lub hasło');
+            }
           } else {
-            this.errorsArr.push('Błędny login lub hasło');
+            this.errorsArr.push('Nie znaleziono użytkownika');
           }
         }
       }
@@ -134,11 +151,6 @@ export default {
     close() {
       this.$refs.form.reset();
       this.$emit('close');
-    },
-  },
-  computed: {
-    isMobile() {
-      return WindowInstanceMap.windowWidth <= 600;
     },
   },
 };

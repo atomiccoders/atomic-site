@@ -20,9 +20,24 @@ const vueRouter = new Router({
       component: () => import('./views/Blog.vue'),
     },
     {
-      path: '/blog/:id',
+      path: '/blog/:page',
+      name: 'blog-page',
+      component: () => import('./views/Blog.vue'),
+    },
+    {
+      path: '/post/:slug',
       name: 'post',
       component: () => import('./views/Post.vue'),
+    },
+    {
+      path: '/polityka-prywatnosci',
+      name: 'policy',
+      component: () => import('./views/Policy.vue'),
+    },
+    {
+      path: '/my-account',
+      name: 'my-account',
+      component: () => import('./views/MyAccount.vue'),
     },
     {
       path: '*',

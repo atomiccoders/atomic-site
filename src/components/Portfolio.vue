@@ -77,7 +77,7 @@
               </v-col>
               <v-col class="hidden-sm-and-down">
                 <v-img
-                  :src="item.img"
+                  :src="require(`@/assets/portfolio/${item.img}`)"
                   width="500px"
                   height="350px"
                   class="mx-auto"
@@ -93,93 +93,20 @@
 </template>
 
 <script>
-import WindowInstanceMap from '../windowInstanceMap.js';
+import Utils from '@/utils';
 
 export default {
   data() {
     return {
-      portfolio: [
-        {
-          title: 'Aplikacja Spacer',
-          subtitle: 'Single Page Application',
-          description:
-            'Wyszukuj i przeglądaj zdjęcia obiektów kosmicznych takich jak gwiazdy, galaktyki i czarne dziury. Poznaj historię stojącą za każdym zdjęciem w zbiorach NASA. Zobacz niesamowite miejsca, o których nawet nie śniłeś. Zacznij już dziś swój własny podbój kosmosu!',
-          link: 'http://spacer.atomiccode.pl',
-          info: [
-            {
-              icon: 'mdi-account',
-              title: 'Nazwa klienta',
-              text: 'Astro-Edu',
-            },
-            {
-              icon: 'mdi-calendar',
-              title: 'Data Projektu',
-              text: '07.2019',
-            },
-            {
-              icon: 'mdi-tag',
-              title: 'Kategorie',
-              text: 'aplikacje, spa',
-            },
-          ],
-          img: require('../assets/portfolio/spacer-mockup.png'),
-        },
-        {
-          title: 'FLOW Communication',
-          subtitle: 'Projekt Strony WWW',
-          description:
-            'Nowoczesność i minimalim w jednym miejscu. Profesjonalna i przejrzysta strona internetowa firmy, do której klienci z chęcią będą wracać wiele razy.',
-          link: 'http://flowcom.pl',
-          info: [
-            {
-              icon: 'mdi-account',
-              title: 'Nazwa klienta',
-              text: 'FLOW',
-            },
-            {
-              icon: 'mdi-calendar',
-              title: 'Data Projektu',
-              text: '05.2019',
-            },
-            {
-              icon: 'mdi-tag',
-              title: 'Kategorie',
-              text: 'strona www, design',
-            },
-          ],
-          img: require('../assets/portfolio/flowcom-mockup.png'),
-        },
-        {
-          title: 'Norris Jokes',
-          subtitle: 'Progressive Web App',
-          description:
-            'Ile znasz dowcipów o Chucku Norrisie? Możliwe, że sporo... ale tutaj znajdziesz ich jeszcze więcej! Impreza nie bardzo idzie? Rozkręć ją na wesoło! Mając tą aplikację w kieszeni, znajomi na pewno zapamiętają Cię jako duszę towarzystwa.',
-          link: '',
-          info: [
-            {
-              icon: 'mdi-account',
-              title: 'Nazwa klienta',
-              text: 'Jokes co.',
-            },
-            {
-              icon: 'mdi-calendar',
-              title: 'Data Projektu',
-              text: '04.2019',
-            },
-            {
-              icon: 'mdi-tag',
-              title: 'Kategorie',
-              text: 'aplikacje, pwa',
-            },
-          ],
-          img: require('../assets/portfolio/norris-mockup.png'),
-        },
-      ],
+      portfolio: [],
     };
+  },
+  firebase: {
+    portfolio: Utils.getFirebaseData('portfolio'),
   },
   computed: {
     isMobile() {
-      return WindowInstanceMap.windowWidth <= 600;
+      return Utils.isMobile();
     },
   },
 };
@@ -194,5 +121,8 @@ export default {
   & ~ * {
     z-index: 1 !important;
   }
+}
+::v-deep .v-btn--active {
+  color: #ffaa00 !important;
 }
 </style>
