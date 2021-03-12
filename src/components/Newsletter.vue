@@ -37,13 +37,31 @@
         </v-card-actions>
       </v-form>
     </v-card>
+
     <v-dialog v-model="termsModal" width="500">
       <v-card>
         <v-card-title class="headline grey darken-2" primary-title>Warunki</v-card-title>
         <v-card-text class="mt-3">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi sit libero
-          corrupti perspiciatis dolore repellat quasi consequuntur accusantium nihil commodi
-          veritatis laborum ex totam quod est, nulla quae ratione similique!
+          <p>
+            Wyrażam zgodę na przetwarzanie moich danych osobowych w celu przystąpienia do
+            usługi Newsletter. Wyrażam zgodę na otrzymywanie na podany w formularzu adres
+            poczty elektronicznej informacji handlowych wysyłanych przez AtomicCode,
+            zgodnie z Ustawą z dnia 18 lipca 2002 r. o świadczeniu usług drogą
+            elektroniczną (Dz. U. z 2002 r., Nr 144, poz. 1204 z późn. zm.). Zapoznałem
+            się i akceptuję Regulamin świadczenia usługi Newsletter Newsletter wysyłany
+            jest nieodpłatnie.
+          </p>
+          <p>
+            Operator informuje niniejszym Użytkownika, że powierza przetwarzanie danych
+            osobowych następującym podmiotom:
+          </p>
+          <ul>
+            <li>
+              The Rocket Science Group, LLC 675 Ponce de Leon Ave NE Suite 5000 Atlanta,
+              GA 30308 USA – w celu korzystania z systemu mailingowego Mailchimp,
+              służącego do przesyłania newslettera.
+            </li>
+          </ul>
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
@@ -52,6 +70,13 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <v-snackbar v-model="snackbar" :color="snackbarType" top right>
+      {{ snackText }}
+      <v-btn color="white" text @click="snackbar = false">
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
+    </v-snackbar>
   </div>
 </template>
 
@@ -71,13 +96,18 @@ export default {
       terms: false,
       termsModal: false,
       pending: false,
+      snackbar: false,
+      snackbarType: 'error',
+      snackText: '',
     };
   },
   methods: {
     validate() {
       if (this.$refs.newsletter.validate()) {
-        this.$refs.newsletter.reset();
+        this.snackbarType = 'success';
         this.snackbar = true;
+        this.snackText = 'E-mail dodany prawidłowo';
+        this.$refs.newsletter.reset();
       }
     },
   },

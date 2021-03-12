@@ -195,7 +195,7 @@ export default {
             console.log(res);
             this.snackbarType = 'success';
             this.snackbar = true;
-            this.snackText = 'Wiadomość wysłana poprawinie';
+            this.snackText = 'Wiadomość wysłana poprawnie';
             this.resetForm();
             this.sending = false;
           },
