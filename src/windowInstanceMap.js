@@ -11,6 +11,7 @@ const WindowInstanceMap = new Vue({
     window.addEventListener('resize', e => {
       this.windowWidth = window.innerWidth;
       this.windowHeight = window.innerHeight;
+      return e;
     });
   },
 });

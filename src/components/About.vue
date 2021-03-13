@@ -11,7 +11,7 @@
         class="font-weight-bold primary--text mb-4"
         :class="[isMobile ? 'display-1' : 'display-2']"
       >
-        Kim jesteśmy
+        Kim jestem
       </h2>
     </v-col>
     <v-col cols="12" md="7">

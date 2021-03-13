@@ -5,7 +5,7 @@
         class="font-weight-bold primary--text mb-4"
         :class="[isMobile ? 'display-1' : 'display-2']"
       >
-        Nasze doświadczenie
+        Moje doświadczenie
       </h2>
     </v-col>
     <v-col cols="12" md="9" class="mx-auto px-0">

@@ -32,7 +32,7 @@
         <v-col
           cols="12"
           sm="8"
-          class="my-8"
+          class="my-8 blog-post"
           style="min-height: calc(100vh - 370px);"
           v-html="post.text"
         >
@@ -108,3 +108,12 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.blog-post {
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+</style>

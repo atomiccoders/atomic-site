@@ -17,6 +17,9 @@ class Utils {
   static getFirebaseData(table) {
     return db.ref(table);
   }
+  static postFirebaseDate(table, data) {
+    db.ref(table).push(data);
+  }
   static getPost(slug) {
     return db
       .ref('posts')

@@ -5,12 +5,13 @@
         <v-icon class="mr-2" color="primary">mdi-email</v-icon>
         Newsletter
       </v-card-title>
-      <v-form ref="newsletter" v-model="valid">
+      <v-form ref="newsletter" v-model="valid" @submit.prevent>
         <v-card-text class="py-0">
           <v-text-field
             v-model="email"
             :rules="emailRules"
             label="E-mail"
+            clearable
             required
           ></v-text-field>
 
@@ -81,6 +82,8 @@
 </template>
 
 <script>
+import Utils from '@/utils';
+
 export default {
   name: 'Newsletter',
   data() {
@@ -99,15 +102,29 @@ export default {
       snackbar: false,
       snackbarType: 'error',
       snackText: '',
+      emailsList: null,
     };
+  },
+  firebase: {
+    newsletter: Utils.getFirebaseData('newsletter'),
   },
   methods: {
     validate() {
       if (this.$refs.newsletter.validate()) {
-        this.snackbarType = 'success';
-        this.snackbar = true;
-        this.snackText = 'E-mail dodany prawidłowo';
-        this.$refs.newsletter.reset();
+        this.emailsList = Object.values(this.newsletter).map(item => item.email);
+        if (this.emailsList.some(item => item === this.email)) {
+          this.snackbarType = 'warning';
+          this.snackbar = true;
+          this.snackText = 'Ten email został już dodany';
+        } else {
+          Utils.postFirebaseDate('newsletter', {
+            email: this.email,
+          });
+          this.snackbarType = 'success';
+          this.snackbar = true;
+          this.snackText = 'E-mail dodany prawidłowo';
+          this.$refs.newsletter.reset();
+        }
       }
     },
   },

@@ -98,7 +98,7 @@ export default {
       return Utils.isMobile();
     },
     publishedPosts() {
-      return this.posts.filter(post => this.isPublished(post));
+      return this.posts.filter(post => this.isPublished(post)).reverse();
     },
   },
   methods: {

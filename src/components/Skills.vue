@@ -13,7 +13,7 @@
             class="font-weight-bold primary--text mb-4"
             :class="[isMobile ? 'display-1' : 'display-2']"
           >
-            Co potrafimy
+            Co potrafię
           </h2>
         </v-col>
         <v-col cols="auto">
